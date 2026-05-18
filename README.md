@@ -3,5 +3,8 @@ I do stuff here assegemnt. B)
 
 Code from other people or the web i use :D
 
+I lowkey use w3schools for everything :p 
+
 Navigation bar:
 - https://www.w3schools.com/howto/howto_js_topnav.asp
+- https://youtu.be/f3uCSj6LIY0?si=UaTxgOd9pqZhUG4C
