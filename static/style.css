@@ -1,3 +1,15 @@
+
+.sum p{
+    text-align: center;
+    font-size: 20px;
+    background-color: yellow;
+}
+
+
+
+
+
+
 .navbar ul{
     list-style-type: none;
     background-color: green;
