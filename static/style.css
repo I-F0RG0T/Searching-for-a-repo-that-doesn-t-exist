@@ -2,36 +2,71 @@
 
 /*NAVBAR !!*/
 
-.navbar ul{
-    list-style-type: none;
+.navbar{
     background-color: green;
     overflow: hidden;
+    padding: 0px; 
+    margin: 0px;
+    position: sticky;
+}
+
+.navbar ul{
+    list-style-type: none;
+    margin: 5px;
 }
 
 .navbar a{
     display: block;
     padding: 15px;
     text-align: center;
+    display:block;
+}
+
+.logo{
+    float: left;
+    width: 40px;
+    display: block;
+    margin: 10px;
+}
+
+.nav-left{
+    float: left;
+}
+
+.nav-right{
+    float: right;
 }
 
 .navbar a:hover{
     background-color: blue;
 }
 
-.navbar li{
-    float: left;
+/*Headin*/
+
+.HEADING{
+    text-align: center;
+    padding: 10px;
+    background-image: url('hosue.PNG');
+    background-attachment: fixed;
+    background-position: center;
+    height: 100px;
 }
 
-.navbar img{
-    float: left;
+/*the text box and images that came with it*/
+
+.grid {
+    padding: 30px 40px;
+    margin: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
 
-.left{
-    float: left;
-}
-
-.right{
-    float: right;
+.box:first-child{
+   font-size: 20px;
+   margin: 20px;
+   background-color: #8f0381;
+   grid-column: 1 / 2;
 }
 
 .button{
