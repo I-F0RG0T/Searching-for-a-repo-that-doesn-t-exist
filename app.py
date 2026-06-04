@@ -1,11 +1,9 @@
-from flask import Flask, render_template
-import sqlite3
+from flask import Flask , render_template
 
 app = Flask(__name__)
 
-DATEBASE = "Datebase"
+@app.route('/')
 
-@app.route( '/' )
 def base():
     return render_template('base.html')
 

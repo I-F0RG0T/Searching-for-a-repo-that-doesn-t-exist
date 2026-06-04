@@ -8,11 +8,22 @@
 </head>
 <body>
     {% include 'nav.html' %}
-    <h1> About us!!<h1>
-    <nav class="sum">
-      <p> this is like epuc games yhins where u can post games and 
-        like share ur fav games to people who might like same game as you lala </p>
-    </nav>
+    <section class="HEADING">
+         <h1> About us!!</h1>
+    </section>
+
+    <section class="yap">
+        <div class="sum">
+            <p> this is like epuc games yhins where u can post games and like share ur fav games to people who might like same game as you lala </p>
+            <img src="{{ url_for('static', filename= 'lago.png') }}" alt="gaming" class="aaa">
+            <img src="{{ url_for('static', filename= 'lago.png') }}" alt="gaming" class="aaa">
+            <img src="{{ url_for('static', filename= 'lago.png') }}" alt="gaming" class="aaa">
+        </div>
+    </section>
+    <section class="searching"></section>
+        <form action="/search" method="get">
+            <input type="text" name="query">
+    </section>
  
 </body>
 </html> 

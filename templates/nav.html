@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<body>
-    <nav class="navbar">
-        <ul> 
+
+  <nav class="navbar">
+    <img src="{{ url_for('static', filename= 'logo.png') }}" alt="Epik Lago" class="logo">
+    <div class="left">
+        <ul>
             <li><a href="/">About</a></li>
             <li><a href="/post">Post?</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <ul>
             <li><a href="">Signup</a></li>
             <li><a href="/signin">Signin</a></li>
         </ul>
-    </nav>
-</body>
-</html>
+    </div>
+</nav>
