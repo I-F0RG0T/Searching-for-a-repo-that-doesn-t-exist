@@ -24,5 +24,26 @@
         </form>
 
     </p>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>user</th>
+        </tr>
+        <!-- iterate through the results use the symbols to show "code" in the template -->
+        {% for user in results %} 
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+            </tr>
+            <!-- must have an "endfor"! dont forget -->
+        {% endfor %}
+    </table>
+        <form action="/signup" method="post">
+        <label for="user">Username</label>
+        <input type="text" name="username">
+        <label for="pass">Password</label>
+        <input type="password" name="pass">
+        <button type="submit">Signup</button>
+    </form>
 </body>
 </html> 
