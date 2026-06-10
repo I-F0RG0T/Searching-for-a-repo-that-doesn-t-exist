@@ -54,6 +54,11 @@
 
 /*the text box and images that came with it*/
 
+.class img{
+    width: 10px;
+    height: 10px;
+}
+
 .grid {
     padding: 30px 40px;
     margin: 20px;
