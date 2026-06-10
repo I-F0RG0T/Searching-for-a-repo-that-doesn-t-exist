@@ -54,24 +54,23 @@
 
 /*the text box and images that came with it*/
 
-.class img{
-    width: 10px;
-    height: 10px;
-}
-
-.grid {
+.grid{
     padding: 30px 40px;
     margin: 20px;
     text-align: center;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns:50% 50%;
+    grid-template-rows:50% 40% 10%;
 }
-
 .box:first-child{
    font-size: 20px;
-   margin: 20px;
+   height: 100%;
+   width: 100%;
    background-color: #8f0381;
-   grid-column: 1 / 2;
+}
+
+.grid img{
+   width: 100px;
 }
 
 .button{
