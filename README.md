@@ -17,7 +17,7 @@ Heading:
 - https://www.w3schools.com/html/html_images_background.asp
 
 display gird and like sum thing:
-- https://www.youtube.com/watch?v=EaWj2AWI5Es
+- https://www.youtube.com/watch?v=EaWj2AWI5Es - 8:36 must wacth
 - https://cssgridgarden.com/
 
 Sign in and page
@@ -29,3 +29,5 @@ Sign in and page
 
 PAST OF CODE! (THIS WILL BE GONE!!)
 
+ padding: 30px 40px;
+    margin: 20px;

@@ -57,6 +57,10 @@ def signin():
         flash("Sign Up Successful")
     return render_template('signin.html', results=results) 
 
+@app.route( '/lognin' )
+def lognin():
+    return render_template('lognin.html')
+
 @app.route( '/post' )
 def post():
     return render_template('post.html')
