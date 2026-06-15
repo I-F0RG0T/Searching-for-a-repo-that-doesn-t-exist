@@ -67,7 +67,8 @@
 
 .box:first-child{
     grid-row: 1 / 3;
-   background-color: #8f0381;
+    grid-column: 1, 3;
+    background-color: #8f0381;
 }
 
 .box:third-child{
@@ -77,7 +78,7 @@
 }
 
 .box:last-child{
-    grid-row: 2 / -1;
+    grid-row: 2 / 3;
 }
 
 
