@@ -10,8 +10,8 @@ app.config['SECRET_KEY'] = "SecretkeyXD"
 
 DATABASE = "database-1.db"
 
-USER: "Name"
-PASS: "Pass"
+USERNAME: "Name"
+PASSWORD: "Pass"
 
 
 @app.route('/')
@@ -22,6 +22,22 @@ def index():
 def signup():
     return render_template('signup.html')
 
+@app.route( '/signup', methods=["GET","POST"])
+def signup_user():
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == USERNAME and password == PASSWORD:
+            session['username'] = username
+            return redirect("test")
+    return render_template('signup.html')
+
+
+
+
+
+
 @app.route( '/signin' )
 def signin():
     return render_template('signin.html')
@@ -29,6 +45,10 @@ def signin():
 @app.route( '/post' )
 def post():
     return render_template('post.html')
+
+@app.route( '/test' )
+def test():
+    return render_template('test.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
