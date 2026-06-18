@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    {% include 'nav.html' %}
-    <p> evil stuff idk. test</p>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content%}
+    <body>
+        <p> evil stuff idk. test</p>
+    </body>
+{% endblock %}

@@ -1,37 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    {% include 'nav.html' %}
-    <p>
-        <form action="/action_page.php">
-            <label for="user">Username: </label>
-            <input type="text" id="user" name="user"><br><br>
-      <!-- this is  like stuff. "Lable" is like what the text thing is fot and yje"input" is like the avlue of the labe. 
-          type is the textbpx, id and name is the same but will have the value-->
+{% extends 'base.html' %}
+{% block content%}
+    <body>
+        <p>
+            <form action="/action_page.php">
+                <label for="user">Username: </label>
+                <input type="text" id="user" name="user"><br><br>
+        <!-- this is  like stuff. "Lable" is like what the text thing is fot and yje"input" is like the avlue of the labe. 
+                type is the textbpx, id and name is the same but will have the value-->
 
-               <label for="pass">Password: </label>
-            <input type="text" id="pass" name="pass"><br><br>
+                <label for="pass">Password: </label>
+                <input type="text" id="pass" name="pass"><br><br>
 
-                 <label for="email">email: </label>
-            <input type="text" id="email" name="email"><br><br>
-            
-            <input type="submit" value="sign up">
-        </form>
-
-    </p>
-        <form action="/signup" method="post">
-        <label for="user">Username</label>
-
-        <input type="text" name="username">
-        <label for="pass">Password</label>
+                    <label for="email">email: </label>
+                <input type="text" id="email" name="email"><br><br>
+                    
+                <input type="submit" value="sign up">
+            </form>
+        </p>
         
-        <input type="password" name="pass">
-        <button type="submit">Signup</button>
-    </form>
-</body>
-</html> 
+        <form action="/signup" method="post">
+            <label for="user">Username</label>
+
+            <input type="text" name="username">
+            <label for="pass">Password</label>
+                
+            <input type="password" name="pass">
+            <button type="submit">Signup</button>
+        </form>
+    </body>
+{% endblock %}
