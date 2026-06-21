@@ -33,3 +33,7 @@ PAST OF CODE! (THIS WILL BE GONE!!)
 
  padding: 30px 40px;
     margin: 20px;
+
+@app.route( '/post' )
+def post():
+    return render_template('post.html')
