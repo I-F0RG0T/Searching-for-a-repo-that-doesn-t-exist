@@ -26,6 +26,18 @@ Sign in and logn in page
 - https://www.youtube.com/watch?v=qAR97gJX4yk -cs brain
 
 
+FROM COMMON TASK IN THE OTHER FOLDER - PLS CHNAE THE TILE OF THIS
+
+06_DYAMICROUTES
+09_SimpleSessionLogin or 11_SimpleUserLogin
+
+
+NOTES | RALKS -
+forms? Dynamic routing? wat
+
+Fake people in the database
+Page need for the fake people lol
+change some stuff :p
 
 
 

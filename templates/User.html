@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content%}
+    <p>
+        hello. this is test page aswell as page 404 :3 - user
+    <ul>
+        {% for user un user %}
+            <li><a href="user/{{user['id']}}"></a></li>
+            {% endfor %}
+    </ul>
+
+    </p>
+{% endblock %}
