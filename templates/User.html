@@ -2,11 +2,11 @@
 {% block content%}
     <p>
         hello. this is test page aswell as page 404 :3 - user
+    </p>
     <ul>
-        {% for user un user %}
-            <li><a href="user/{{user['id']}}"></a></li>
-            {% endfor %}
+        {% for user in user %}
+            <li><a href="User/{{User[0]}}"></a></li>
+        {% endfor %}
     </ul>
 
-    </p>
 {% endblock %}
