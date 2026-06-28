@@ -62,6 +62,8 @@ def user():
 def User_list(id):
     sql = f"SELECT * FROM User WHERE id =?"
     User = query_db(sql, args=(id,), one=True)
+    if User == None:
+        exit(404)
     return render_template('simple_User.html', User=User)#give the data a templagte or like looks
 
 @app.route( '/simple_User' )
