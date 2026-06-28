@@ -77,12 +77,14 @@ def Game():
 
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
-    sql = f"SELECT * FROM Game WHERE id =?"
-    User = query_db(sql, args=(id,), one=True)
+    sql = f"SELECT * FROM Game WHERE id = {id}"
+    User = query_db(sql, one=True)
     return render_template('Game_info.html', Game=Game)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')
+
+#End of Dynamic Routes Games ;,D
 
 @app.route( '/test' )
 def test():

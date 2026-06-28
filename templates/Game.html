@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content%}
-    <body>
-        <p> evil stuff idk. test</p>
-    </body>
 
-    <section class="EvilGame">
+<p> evil stuff idk. test</p>
+
+
+<section class="EvilGame">
     <p> hello. this is NOT a page 404 :p - Game results </p>
     {% for Game in results %}
         <li>  
@@ -12,5 +12,5 @@
             <a href="Game/{{Game[0]}}"> </a>
         </li>
     {% endfor %}
-    </section>
+</section>
 {% endblock %}

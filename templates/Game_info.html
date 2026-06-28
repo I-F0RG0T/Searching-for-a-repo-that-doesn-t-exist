@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content%}
 <section class="GameBox">
-    <p> hello. this is NOT a page 404 :p - user results </p>
-    {% for Game in results %}
-        <li>  
-            <p> {{ User[1] }}</p> 
-            <a href="Game/{{Game[0]}}"> </a>
-        </li>
-    {% endfor %}
+    <p> hello. this is NOT a page 404 :p - game results </p>
+    <p> {{Game[1]}}</p>
 </section>
+
+<h1> This is {{ Game[1] }}</h1>
+
+<p> hai - for the whatver Game this is for :3  {{Game[3]}} :3</p>
+
 
 {% endblock %}
