@@ -8,7 +8,7 @@ app = Flask(__name__)
 #radnon secry key for each session i think
 app.config['SECRET_KEY'] = "SecretkeyXD"
 
-DATABASE = "database-1.db"
+DATABASE = "Database-1.db"
 
 USERNAME = "Name"
 PASSWORD = "Pass"
@@ -51,25 +51,24 @@ def signup_post():
 def signin():
     return render_template('signin.html')
 
-#stuff of rhw stuff of  the stuff
+#stuff of Dynamic Routes
 
 @app.route('/User' )
 def user():
-    results = query_db("SELECT id, Pass FROM User")
-    return render_template('User.html')
+    results = query_db("SELECT * FROM User")
+    return render_template('User.html', results=results)
 
 @app.route( '/User/<int:id>' )
 def simple(id):
-    sql = "SELECT * FROM User WHERE id = {id}" #change the fsring(id) , get the data
-    user = query_db(sql, one=True)
-    return render_template('simple_user.html', User=User)#give the data a templagte or like looks
+    sql = f"SELECT * FROM User WHERE id =?"
+    User = query_db(sql, args=(id,), one=True)
+    return render_template('simple_User.html', User=User)#give the data a templagte or like looks
 
+@app.route( '/simple_User' )
+def simple_User():
+    return render_template('simple_User.html')
 
-#pt 1 stuff of rhw stuff of  the stuff
-
-@app.route( '/simple_user' )
-def Simple_user():
-    return render_template('simple_user.html')
+#End of Dynamic Routes
 
 @app.route( '/Games' )
 def Games():

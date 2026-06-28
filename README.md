@@ -8,7 +8,6 @@ I lowkey use w3schools for everything :p
 Vedya and lily from my class help me and give some code stuff. :D
 
 
-
 Navigation bar:
 - https://www.w3schools.com/howto/howto_js_topnav.asp
 - https://www.youtube.com/watch?v=f3uCSh6LIY0
@@ -19,33 +18,23 @@ Heading:
 display gird and like sum thing:
 - https://www.youtube.com/watch?v=EaWj2AWI5Es - 8:36 must wacth
 - https://cssgridgarden.com/
+- https://css-tricks.com/almanac/properties/o/overflow-clip-margin/ 
 
-Sign in and logn in page
+Sign in and logn in page:
 - https://www.w3schools.com/Tags/tryit.asp?filename=tryhtml5_input_type_text
 - https://www.youtube.com/watch?v=2O8pkybH6po - brocode
 - https://www.youtube.com/watch?v=qAR97gJX4yk -cs brain
 
 
-FROM COMMON TASK IN THE OTHER FOLDER - PLS CHNAE THE TILE OF THIS
+DYAMICROUTES:
+- https://www.youtube.com/watch?v=Jm38tqJRaK8 - Nick De Raj
+
+
+CommonTasks folder thing i used and look at!:
 
 06_DYAMICROUTES
 09_SimpleSessionLogin or 11_SimpleUserLogin
 
 
-NOTES | RALKS -
-forms? Dynamic routing? wat
-
-Fake people in the database
-Page need for the fake people lol
-change some stuff :p
-
-
 
 PAST OF CODE! (THIS WILL BE GONE!!)
-
- padding: 30px 40px;
-    margin: 20px;
-
-@app.route( '/post' )
-def post():
-    return render_template('post.html')
