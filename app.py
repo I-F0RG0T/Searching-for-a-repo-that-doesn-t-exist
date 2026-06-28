@@ -59,7 +59,7 @@ def user():
     return render_template('User.html', results=results)
 
 @app.route( '/User/<int:id>' )
-def simple(id):
+def User_list(id):
     sql = f"SELECT * FROM User WHERE id =?"
     User = query_db(sql, args=(id,), one=True)
     return render_template('simple_User.html', User=User)#give the data a templagte or like looks
@@ -68,11 +68,21 @@ def simple(id):
 def simple_User():
     return render_template('simple_User.html')
 
-#End of Dynamic Routes
+#End of Dynamic Routes for User and start of Games ;,D
 
-@app.route( '/Games' )
-def Games():
-    return render_template('Games.html')
+@app.route( '/Game' )
+def Game():
+    results = query_db("SELECT * FROM Game")
+    return render_template('Game.html')
+
+@app.route( '/Game/<int:id>' )
+def Game_list(id):
+    sql = f"SELECT * FROM Game WHERE id =?"
+    User = query_db(sql, args=(id,), one=True)
+    return render_template('Game_info.html', Game=Game)#give the data a templagte or like looks
+
+def Game_list():
+    return render_template('Game_info.html')
 
 @app.route( '/test' )
 def test():

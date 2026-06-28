@@ -112,3 +112,9 @@
     margin: 20px;
     list-style-type: none;
 }
+
+
+p {
+    background-color: #67a8dd;
+    color: #101637;
+}
