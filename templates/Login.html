@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content%}
+<body> 
+    <form action="Login.html" method="POST">
+        <div class = "Input">
+            <label for= "Username"> Username</label>
+            <input type="text" id="Name" placeholder="enter here" required></imput>
+
+            <label for= "Password"> Password</label>
+            <input type="text" id="Password" placeholder="enter here" required></imput>
+        </div>
+
+        <div class="action">
+            <a href="test" class="forgot-link">Forgot Password</a>
+        </div>
+
+        <button type="submit" class="login-in">Loginbutton</button>
+
+        <div class="Account404">
+            <a href="signup">Dont have a account? Sign up now!</a>
+        </div>
+    </form>
+</body>
+{% endblock %}

@@ -10,8 +10,6 @@ app.config['SECRET_KEY'] = "SecretkeyXD"
 
 DATABASE = "Database-1.db"
 
-USERNAME = "Name"
-PASSWORD = "Pass"
 
 def query_db(sql,args=(),one=False):
     #connect and query- will retun one item if one=true and can accept arguments as tuple
@@ -47,11 +45,31 @@ def signup_post():
     return render_template('signup.html')
 
 
-@app.route( '/signin' )
-def signin():
-    return render_template('signin.html')
+#Login Oops. Look at thing for folder 11 from commnitn tasl
 
-#stuff of Dynamic Routes
+
+@app.route( '/Login' )
+def Login():
+    return render_template('Login.html')
+
+@app.route( '/Login', methods=["GET","POST"])
+def Lognin_POST():
+    if request.method == "POST":
+        Username = request.form['Username']
+        Password = request.form['Password']
+
+        sql = "SELECT * from User WHERE Username = ?"
+        User = query_db(sql=sql,args=(Username,),one=True)
+        
+        if User:
+            if check_password_hash(User[2], Password):#check the password thing. i think is worng
+                session['User'] = User
+                flash("GOod")
+        else:
+            flash("Bad")
+    return render_template('Login.html')
+
+#Start of Dynamic Routes and end  of Lognin
 
 @app.route('/User' )
 def user():
@@ -80,7 +98,9 @@ def Game():
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
     sql = f"SELECT * FROM Game WHERE id = {id}"
-    User = query_db(sql, one=True)
+    Game = query_db(sql, one=True)
+    if Game == None:
+        exit(404)
     return render_template('Game_info.html', Game=Game)#give the data a templagte or like looks
 
 def Game_list():

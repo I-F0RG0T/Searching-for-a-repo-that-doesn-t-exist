@@ -39,4 +39,11 @@ CommonTasks folder thing i used and look at!:
 
 PAST OF CODE! (THIS WILL BE GONE!!)
 
+Flash - error thing
+
+resulte {0} (give you the one you want/ user wise) 
+
+if check_password_Hash(user[2]password):
+session['user'] = user
+flash('ppassjidsajd")
 
