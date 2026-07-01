@@ -30,10 +30,13 @@ DYAMICROUTES:
 - https://www.youtube.com/watch?v=Jm38tqJRaK8 - Nick De Raj
 
 
-CommonTasks folder thing i used and look at!:
+CommonTasks folder thing i used and look at from SRCodeer:
 
+Using Forms
 06_DYAMICROUTES
-09_SimpleSessionLogin or 11_SimpleUserLogin
+09_SimpleSessionLogin
+Images uploads
+11_SimpleUserLogin
 
 
 
