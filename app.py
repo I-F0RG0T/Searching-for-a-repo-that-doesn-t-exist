@@ -8,7 +8,7 @@ app = Flask(__name__)
 #radnon secry key for each session i think
 app.config['SECRET_KEY'] = "SecretkeyXD"
 
-DATABASE = "Database-1.db"
+DATABASE = "Data-1.db"
 
 
 def query_db(sql,args=(),one=False):
@@ -39,8 +39,8 @@ def signup():
 
         hashed_password = generate_password_hash(Password)
 
-        sql = "INSERT INTO User (Username, password) VALUES (?,?)"
-        query_db(sql,(Username,hashed_password))
+        sql = "INSERT INTO User (Username, Password) VALUES (?,?)"
+        query_db(sql,(Username, hashed_password))
         flash("signup goood")
     return render_template('signup.html')
 
@@ -74,8 +74,8 @@ def user():
 
 @app.route( '/User/<int:id>' )
 def User_list(id):
-    sql = f"SELECT * FROM User WHERE id =?"
-    User = query_db(sql, args=(id,), one=True)
+    sql = f"SELECT * FROM User WHERE id = {id}"
+    User = query_db(sql, one=True)
     if User == None:
         exit(404)
     return render_template('simple_User.html', User=User)#give the data a templagte or like looks
@@ -104,9 +104,9 @@ def Game_list():
 
 #End of Dynamic Routes Games ;,D
 
-@app.route( '/test' )
-def test():
-    return render_template('test.html')
+@app.route( '/404' )
+def Error():
+    return render_template('404.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

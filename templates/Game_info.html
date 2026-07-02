@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% block content%}
-<section class="GameBox">
-    <p> hello. this is NOT a page 404 :p - game results </p>
-    <p> {{Game[1]}}</p>
-</section>
+<body>
+    <div class="setupGAME">
+        <h1> This is {{ Game[1] }}</h1>
 
-<h1> This is {{ Game[1] }}</h1>
-
-<p> hai - for the whatver Game this is for :3  {{Game[3]}} :3</p>
-
+        <p> {{Game[2]}} <br> {{Game[3]}} <br> {{Game[4]}} :3</p>
+    </div>
+</body>
 
 {% endblock %}
