@@ -1,7 +1,7 @@
-from flask import Flask , render_template, session, redirect, url_for, request
+from flask import Flask , render_template, session, redirect, url_for, request, flash
 
 import sqlite3
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -29,32 +29,28 @@ def query_db(sql,args=(),one=False):
 def index():
     return render_template('index.html')
 
-@app.route( '/signup' )
-def signup():
-    return render_template('signup.html')
+#Sign up!!
 
 @app.route( '/signup', methods=["GET","POST"])
-def signup_post():
+def signup():
     if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
+        Username = request.form['Username']
+        Password = request.form['Password']
 
-        if username == USERNAME and password == PASSWORD:
-            session['username'] = username
-            return redirect("test")
+        hashed_password = generate_password_hash(Password)
+
+        sql = "INSERT INTO User (Username, password) VALUES (?,?)"
+        query_db(sql,(Username,hashed_password))
+        flash("signup goood")
     return render_template('signup.html')
 
 
-#Login Oops. Look at thing for folder 11 from commnitn tasl
-
-
-@app.route( '/Login' )
-def Login():
-    return render_template('Login.html')
+#Login :p
 
 @app.route( '/Login', methods=["GET","POST"])
-def Lognin_POST():
+def Lognin():
     if request.method == "POST":
+
         Username = request.form['Username']
         Password = request.form['Password']
 
@@ -64,9 +60,9 @@ def Lognin_POST():
         if User:
             if check_password_hash(User[2], Password):#check the password thing. i think is worng
                 session['User'] = User
-                flash("GOod")
-        else:
-            flash("Bad")
+                flash("Good")
+            else:
+                flash("Bad")
     return render_template('Login.html')
 
 #Start of Dynamic Routes and end  of Lognin
@@ -93,7 +89,7 @@ def simple_User():
 @app.route( '/Game' )
 def Game():
     results = query_db("SELECT * FROM Game")
-    return render_template('Game.html')
+    return render_template('Game.html', results=results)
 
 @app.route( '/Game/<int:id>' )
 def Game_list(id):

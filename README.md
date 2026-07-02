@@ -33,11 +33,12 @@ DYAMICROUTES:
 CommonTasks folder thing i used and look at from SRCodeer:
 
 Using Forms
-06_DYAMICROUTES
-09_SimpleSessionLogin
-Images uploads
-11_SimpleUserLogin
+DynamicRoutes
+SimpleSessionLogin
+ImageUp loads
+SimpleUserLogin
 
+Coding2go - youtube
 
 
 PAST OF CODE! (THIS WILL BE GONE!!)

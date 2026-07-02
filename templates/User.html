@@ -4,8 +4,7 @@
     <p> hello. this is NOT a page 404 :p - user results </p>
     {% for User in results %}
         <li>  
-            <p> {{ User[1] }}</p> 
-            <a href="User/{{User[0]}}"> </a>
+            <a href="User/{{User[0]}}">{{ User[1] }}</a>
         </li>
     {% endfor %}
 </section>
