@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% block content%}
-
-<section class="EvilGame">
-    <p> hello. this is NOT a page 404 :p - Game results </p>
-    {% for Game in results %}
-        <li>  
-            <a href="Game/{{Game[0]}}">{{ Game[1] }}</a>
-        </li>
-    {% endfor %}
-</section>
-
+<body>
+    <section>          
+        <p> Games here! Lises of games!! uh more more blalelksladndkasjafjfaejad </p>
+    </section>
+    {% include 'GenreBox.html' %}
+</body>
 {% endblock %}

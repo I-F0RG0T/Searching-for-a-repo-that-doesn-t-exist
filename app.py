@@ -19,9 +19,6 @@ def query_db(sql,args=(),one=False):
     results = cursor.fetchall()
     db.commit()
     db.close()
-    #return None if ther is no result from the query
-    #return the first item only if one=True
-    #return the list of tuples if one=False
     return (results[0] if results else None) if one else results
 
 
@@ -34,6 +31,7 @@ def index():
 @app.route( '/signup', methods=["GET","POST"])
 def signup():
     if request.method == "POST":
+
         Username = request.form['Username']
         Password = request.form['Password']
 
@@ -48,7 +46,7 @@ def signup():
 #Login :p
 
 @app.route( '/Login', methods=["GET","POST"])
-def Lognin():
+def Login():
     if request.method == "POST":
 
         Username = request.form['Username']
@@ -58,19 +56,28 @@ def Lognin():
         User = query_db(sql=sql,args=(Username,),one=True)
         
         if User:
-            if check_password_hash(User[2], Password):#check the password thing. i think is worng
+            if check_password_hash(User[2],Password):#check the password thing. i think is worng
                 session['User'] = User
-                flash("Good")
-            else:
-                flash("Bad")
+                flash('good')
+        else:
+            flash('bad')
     return render_template('Login.html')
 
-#Start of Dynamic Routes and end  of Lognin
+#Start of log out and end of Login
 
-@app.route('/User' )
+@app.route('/logout')
+def logout():
+    #just clear the username from the session and redirect back to the home page
+    session['User'] = None
+    return redirect('/')
+
+
+#Start of Dynamic Routes and end  of Log out
+
+@app.route('/UserPage' )
 def user():
     results = query_db("SELECT * FROM User")
-    return render_template('User.html', results=results)
+    return render_template('UserPage.html', results=results)
 
 @app.route( '/User/<int:id>' )
 def User_list(id):
