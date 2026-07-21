@@ -57,7 +57,7 @@
 
 /*the grid box with text and images that came with it*/
 
-.grid{
+.Index{
     display: grid;
     grid-template-columns: 75% 25%;
     grid-template-rows: 33.3% 33.3% 33.3%;
@@ -65,7 +65,7 @@
     margin: 20px;
 }
 
-.grid img{
+.Index img{
    width: 100%;
    height: 100%;
    overflow: hidden;   
@@ -119,8 +119,29 @@ p {
     color: #101637;
 }
 
+.rem{
+    background-color: #0edc1f;
+    color: #101637;
+}
+
+
 /*list of games*/
 
-.Genre{
+h2.Genre{
     background-color: #67a8dd;
+}
+
+.GameGrid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    background-color: #11c240;
+    padding: 20px;
+    margin: 20px;
+}
+
+.GameGrid img{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;   
 }

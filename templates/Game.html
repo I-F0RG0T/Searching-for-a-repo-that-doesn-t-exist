@@ -4,6 +4,15 @@
     <section>          
         <p> Games here! Lises of games!! uh more more blalelksladndkasjafjfaejad </p>
     </section>
-    {% include 'GenreBox.html' %}
+    <lis class="Genre">
+        {% for Game in results %}
+            <div>
+                <h2> {{ Game[4]}}</h2>
+                    <li>  
+                        <a href="Game/{{Game[0]}}">{{ Game[1]}}</a>
+                    </li>
+            </div>
+        {% endfor %}
+    </lis>
 </body>
 {% endblock %}

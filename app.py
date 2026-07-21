@@ -77,15 +77,18 @@ def logout():
 @app.route('/UserPage' )
 def user():
     results = query_db("SELECT * FROM User")
+
     return render_template('UserPage.html', results=results)
 
 @app.route( '/User/<int:id>' )
 def User_list(id):
     sql = f"SELECT * FROM User WHERE id = {id}"
+    GaTitle = query_db("SELECT Title FROM Game")
+
     User = query_db(sql, one=True)
     if User == None:
         exit(404)
-    return render_template('simple_User.html', User=User)#give the data a templagte or like looks
+    return render_template('simple_User.html', User=User, GaTitle=GaTitle)#give the data a templagte or like looks
 
 @app.route( '/simple_User' )
 def simple_User():
@@ -101,10 +104,13 @@ def Game():
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
     sql = f"SELECT * FROM Game WHERE id = {id}"
+    
+    User = query_db("SELECT * FROM User")
+
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
-    return render_template('Game_info.html', Game=Game)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')

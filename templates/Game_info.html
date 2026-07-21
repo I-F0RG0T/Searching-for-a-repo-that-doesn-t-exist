@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
 {% block content%}
 <body>
-    <div class="setupGAME">
-        <h1> This is {{ Game[1] }}</h1>
-
+     <section class="SumGame">
+        <div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="100" height="100">
+            <h1> This is {{ Game[1] }}</h1>
+            <p>{{Game[4]}}</p>
+        </div>
         <p> {{Game[2]}} <br> {{Game[3]}} <br> {{Game[4]}} :3</p>
-    </div>
+    </section>
+
+    <section class="HEADING">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="100" height="100">
+    </section>
+
+    <section>
+        <div class="GameGrid">
+            <p class="GBox"> hau</p>
+            <img class="GBox" src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
+            <p class="GBox"> test tes</p>
+            <img class="GBox" src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
+        </div>
+    </section>
+
+    <section class="GameReview">
+        <h2> User who likes this game</h2>
+        {% for User in User %}
+            <li>  
+                <a href="User/{{User[0]}}">{{ User[1] }}</a>
+            </li>
+        {% endfor %}
+        </div>
+    </section>
 </body>
 
 {% endblock %}
