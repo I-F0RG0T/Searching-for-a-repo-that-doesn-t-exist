@@ -98,13 +98,13 @@ def simple_User():
 
 @app.route( '/Game' )
 def Game():
-    results = query_db("SELECT * FROM Game")
+    results = query_db("SELECT * FROM Game ORDER BY Genre GLOB '[A-Z,a-z]*' DESC")
     return render_template('Game.html', results=results)
 
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
     sql = f"SELECT * FROM Game WHERE id = {id}"
-    
+
     User = query_db("SELECT * FROM User")
 
     Game = query_db(sql, one=True)
