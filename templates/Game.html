@@ -6,13 +6,19 @@
     </section>
     <lis class="Genre">
         {% for Game in results %}
-            <div>
-                <h2> {{ Game[4]}}</h2>
-                    <li>  
-                        <a href="Game/{{Game[0]}}">{{ Game[1]}}</a>
-                    </li>
-            </div>
+            </lis>  {{ Game[4]}} </lis>
         {% endfor %}
     </lis>
 </body>
 {% endblock %}
+
+<p>
+    tilte of the genre<br>
+    kist of games under the genre.
+</p>
+
+                <dl>
+                    <dt> {{ Game[4]}}</dt>
+                    <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
+                </dl>
+            </div>

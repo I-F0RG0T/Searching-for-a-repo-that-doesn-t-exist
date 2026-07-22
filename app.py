@@ -98,7 +98,7 @@ def simple_User():
 
 @app.route( '/Game' )
 def Game():
-    results = query_db("SELECT * FROM Game ORDER BY Genre GLOB '[A-Z,a-z]*' DESC")
+    results = query_db("SELECT * FROM Game ORDER BY Genre, Title GLOB '[A-Z,a-z]*' DESC;")
     return render_template('Game.html', results=results)
 
 @app.route( '/Game/<int:id>' )
@@ -110,6 +110,8 @@ def Game_list(id):
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
+
+
     return render_template('Game_info.html', Game=Game, User=User)#give the data a templagte or like looks
 
 def Game_list():
