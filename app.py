@@ -117,7 +117,13 @@ def Game_list(id):
 def Game_list():
     return render_template('Game_info.html')
 
-#End of Dynamic Routes Games ;,D
+#End of Dynamic Routes Games ;,D | Start for making ur own game page!
+
+@app.route( '/regGame' )
+def renamethispls():
+    return render_template('regGame.html')
+
+
 
 @app.route( '/404' )
 def Error():

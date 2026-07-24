@@ -6,7 +6,8 @@
     </section>
     <lis class="Genre">
         {% for Game in results %}
-            </lis>  {{ Game[4]}} </lis>
+            <dt> {{ Game[4]}}</dt>
+                 <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
         {% endfor %}
     </lis>
 </body>
@@ -22,3 +23,5 @@
                     <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
                 </dl>
             </div>
+
+            </lis>  {{ Game[4]}} </lis>
