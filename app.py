@@ -98,8 +98,14 @@ def simple_User():
 
 @app.route( '/Game' )
 def Game():
-    results = query_db("SELECT * FROM Game ORDER BY Genre, Title GLOB '[A-Z,a-z]*' DESC;")
+    results = query_db("SELECT * FROM Game ORDER BY type_Genre, Title GLOB '[A-Z,a-z]*' DESC;")
+    test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
     return render_template('Game.html', results=results)
+
+@app.route( '/test' )
+def test():
+    test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
+    return redirect("/Game", test=test)
 
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
@@ -121,6 +127,9 @@ def Game_list():
 
 @app.route( '/regGame' )
 def renamethispls():
+
+
+    
     return render_template('regGame.html')
 
 

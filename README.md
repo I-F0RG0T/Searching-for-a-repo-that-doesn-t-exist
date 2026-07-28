@@ -29,6 +29,16 @@ Sign in and logn in page:
 DYAMICROUTES:
 - https://www.youtube.com/watch?v=Jm38tqJRaK8 - Nick De Raj
 
+FORM:
+- https://github.com/MrWardKKHS/shepherd.git
+
+
+------------------------->>>>>>>>>>>>>>>>>>
+
+
+Textarea because i dont know what it is:
+- https://www.w3schools.com/tags/tag_textarea.asp
+
 
 CommonTasks folder thing i used and look at from SRCodeer:
 
@@ -40,6 +50,7 @@ SimpleUserLogin
 
 Coding2go - youtube
 
+---------------------------->>>>>>>>>>>>>>>>>>>>
 
 PAST OF CODE! (THIS WILL BE GONE!!)
 

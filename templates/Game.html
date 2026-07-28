@@ -4,12 +4,22 @@
     <section>          
         <p> Games here! Lises of games!! uh more more blalelksladndkasjafjfaejad </p>
     </section>
+
+    <p> test what</p>
+    <lis>
+        {% for Genre in test %}
+            <p>{{ Genre[1] }}</p>
+        {% endfor %}
+    </lis>
+
     <lis class="Genre">
         {% for Game in results %}
             <dt> {{ Game[4]}}</dt>
                  <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
         {% endfor %}
     </lis>
+
+
 </body>
 {% endblock %}
 
