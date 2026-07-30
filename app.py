@@ -1,5 +1,5 @@
 from flask import Flask , render_template, session, redirect, url_for, request, flash
-
+from livereload import Server
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -32,13 +32,13 @@ def index():
 def signup():
     if request.method == "POST":
 
-        Username = request.form['Username']
+        User = request.form['Username']
         Password = request.form['Password']
 
         hashed_password = generate_password_hash(Password)
 
-        sql = "INSERT INTO User (Username, Password) VALUES (?,?)"
-        query_db(sql,(Username, hashed_password))
+        sql = "INSERT INTO User (User, Password) VALUES (?,?)"
+        query_db(sql,(User, hashed_password))
         flash("signup goood")
     return render_template('signup.html')
 
@@ -49,18 +49,19 @@ def signup():
 def Login():
     if request.method == "POST":
 
-        Username = request.form['Username']
+        User = request.form['User']
         Password = request.form['Password']
 
-        sql = "SELECT * from User WHERE Username = ?"
-        User = query_db(sql=sql,args=(Username,),one=True)
+        sql = "SELECT * from User WHERE User = ?"
+        User = query_db(sql=sql,args=(User,),one=True)
         
         if User:
             if check_password_hash(User[2],Password):#check the password thing. i think is worng
                 session['User'] = User
                 flash('good')
-        else:
-            flash('bad')
+            else:
+                flash('bad')
+
     return render_template('Login.html')
 
 #Start of log out and end of Login
@@ -107,6 +108,8 @@ def test():
     test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
     return redirect("/Game", test=test)
 
+#what ------------------->>>>>>>....
+
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
     sql = f"SELECT * FROM Game WHERE id = {id}"
@@ -126,11 +129,18 @@ def Game_list():
 #End of Dynamic Routes Games ;,D | Start for making ur own game page!
 
 @app.route( '/regGame' )
-def renamethispls():
+def make_Game():
+
+    if not session["User"]:
+        flash("test tes t ets test", category ="warning")
+        return redirect("/login?redirect=regGame")
+
+    type_Genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
+
+    return render_template('regGame.html', type_Genre=type_Genre)
 
 
-    
-    return render_template('regGame.html')
+
 
 
 

@@ -62,3 +62,21 @@ if check_password_Hash(user[2]password):
 session['user'] = user
 flash('ppassjidsajd")
 
+
+
+@app.route( '/make_Game' )
+def make_Game():
+
+    id = session["User"]['uuid']
+
+    Title = request.form["Title"]
+    About = request.form["About"]
+    type_Genre = request.form["Genre"]
+
+    filename = request.files["file"].filename
+    file  = request.files["file"]
+
+    file.save(UPLOAD_FOLDER / filename)
+
+    return render_template('regGame.html')
+
