@@ -32,13 +32,13 @@ def index():
 def signup():
     if request.method == "POST":
 
-        User = request.form['Username']
+        Username = request.form['Username']
         Password = request.form['Password']
 
         hashed_password = generate_password_hash(Password)
 
-        sql = "INSERT INTO User (User, Password) VALUES (?,?)"
-        query_db(sql,(User, hashed_password))
+        sql = "INSERT INTO User (Username, Password) VALUES (?,?)"
+        query_db(sql,(Username, hashed_password))
         flash("signup goood")
     return render_template('signup.html')
 
@@ -46,14 +46,14 @@ def signup():
 #Login :p
 
 @app.route( '/Login', methods=["GET","POST"])
-def Login():
+def Login(): 
     if request.method == "POST":
 
-        User = request.form['User']
+        Username = request.form['Username']
         Password = request.form['Password']
 
         sql = "SELECT * from User WHERE User = ?"
-        User = query_db(sql=sql,args=(User,),one=True)
+        User = query_db(sql=sql,args=(Username,),one=True)
         
         if User:
             if check_password_hash(User[2],Password):#check the password thing. i think is worng
@@ -129,9 +129,10 @@ def Game_list():
 #End of Dynamic Routes Games ;,D | Start for making ur own game page!
 
 @app.route( '/regGame' )
-def make_Game():
-
-    if not session["User"]:
+def regGame():
+    #this get the user session and make it to a varblae.
+    user = session.get("User", None)
+    if not user:
         flash("test tes t ets test", category ="warning")
         return redirect("/login?redirect=regGame")
 
