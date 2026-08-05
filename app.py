@@ -49,8 +49,11 @@ def signup():
 def Login(): 
     if request.method == "POST":
 
+
         Username = request.form['Username']
         Password = request.form['Password']
+
+        print(Username)
 
         sql = "SELECT * from User WHERE User = ?"
         User = query_db(sql=sql,args=(Username,),one=True)
@@ -131,19 +134,26 @@ def Game_list():
 @app.route( '/regGame' )
 def regGame():
     #this get the user session and make it to a varblae.
-    user = session.get("User", None)
-    if not user:
-        flash("test tes t ets test", category ="warning")
-        return redirect("/login?redirect=regGame")
+
+    #add the thing about the session :D
+    
 
     type_Genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
 
     return render_template('regGame.html', type_Genre=type_Genre)
 
+@app.route( '/make_Game' )
+def make_Game():
 
+    Title = request.form["Title"]
+    About = request.form["About"]
+    type_Genre = request.form["Genre"]
 
+#add thing lol
 
+    query_db(sql,(Title, About, type_Genre) )
 
+    return redirect("/")
 
 @app.route( '/404' )
 def Error():

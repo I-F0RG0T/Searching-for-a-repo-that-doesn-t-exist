@@ -1,47 +1,52 @@
 {% extends 'base.html' %}
 {% block content%}
 
+<p> hi hi hi - spoke</p>
+
 <section class="Game-Register">
     <h1>Put a Game on here!</h1>
 
     <p> Do you have a game that we dont have here? <br>
     Here you can put any game on our website for all to see!!</p>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="/make_Game" method="POST" enctype="multipart/form-data">
 
-        <label for="Title">Name of Game</label>
+        <!-- Name of game-->
+        <label for="Title">Title</label>
         <input type="text" id="Tile" name="Tile" placeholder="hai" required>
 
+        <!-- About-->
         <label for="About">About the game!</label>
         <input type="text" id="About" name="About" placeholder="test">
 
-        <label for="type_Genre">Genre</label>
-        <select id="type_Genre" name="type" required>
-            <option value="" selected disabled>select a genre!</option>
+        <section class="Genrelist">
+        <!-- Genre, probaly fix it. IS not showing the genre xd-->
+            <label for="type_Genre">Genre</label>
+            <select id="type_Genre" name="type" required>
+                <option value="" selected disabled>select a genre!</option>
+                {% for type_Genre in type_Genre %}
+                    <option value="{{ type_Genre['id'] }}">
+                        {{ type_Genre['type']}}
+                    </option>
+                {% endfor %}
+            </select>
+        </section>
 
-            {$ for type_Genre }
-        </select>
-
-
-
-    Title = request.form["Title"]
-    About = request.form["About"]
-    type_Genre = request.form["Genre"]
-
-    filename = request.files["file"].filename
-    file  = request.files["file"]
-
-
-
-
+        <button type="submit">Button</button>
 
     </form>
+</select>
 
-</section>
-
+    {% for type_Genre in type_Genre %}
+            <li> test test {{ type_Genre['type'] }} </li>
+    {% endfor %}
 
 
 {% endblock %}
+
+
+
+
 
 
     <p> Game<br> IMPOTENY Title, About, Genre <br> Not IMPORANT logo </p>

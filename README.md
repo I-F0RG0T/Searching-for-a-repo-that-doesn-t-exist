@@ -80,3 +80,36 @@ def make_Game():
 
     return render_template('regGame.html')
 
+
+
+3/8/26 -
+- the "return redirect("/Game")" keep sending me back to thing. which is tycpially what it meant to do, but like doesn't say on page that the user need to sign in, only on the game page :p
+
+
+
+add this in when im done
+@app.route( '/regGame' )
+def regGame():
+    #this get the user session and make it to a varblae.
+    user = session.get("User", None)
+    if not user:
+        flash("not log in :p", category ="warning")
+
+
+        
+
+
+    Title = request.form["Title"]
+    About = request.form["About"]
+    type_Genre = request.form["Genre"]
+
+    filename = request.files["file"].filename
+    file  = request.files["file"]
+
+
+
+
+
+    </form>
+
+</section>
