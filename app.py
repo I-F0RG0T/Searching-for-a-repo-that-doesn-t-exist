@@ -147,6 +147,7 @@ def regGame():
 
     return render_template('regGame.html', type_Genre=type_Genre)
 
+@app.route( '/make_Game' )
 def make_Game():
 
     Title = request.form["Title"]
@@ -160,7 +161,7 @@ def make_Game():
 
     query_db(sql,(Title, About, type_Genre) )
 
-    return redirect("/Game")
+    return redirect("/make_Game")
 
 # stuff here --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
