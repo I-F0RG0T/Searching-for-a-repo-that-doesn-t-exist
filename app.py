@@ -104,14 +104,19 @@ def simple_User():
 def Game():
     results = query_db("SELECT * FROM Game ORDER BY type_Genre, Title GLOB '[A-Z,a-z]*' DESC;")
     test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
+
+    print(Game)
+
     return render_template('Game.html', results=results)
 
+
+#idk what this is for lol
 @app.route( '/test' )
 def test():
     test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
     return redirect("/Game", test=test)
 
-#what ------------------->>>>>>>....
+#More games page related stiff. ------------------->>>>>>>....
 
 @app.route( '/Game/<int:id>' )
 def Game_list(id):
@@ -142,18 +147,22 @@ def regGame():
 
     return render_template('regGame.html', type_Genre=type_Genre)
 
-@app.route( '/make_Game' )
 def make_Game():
 
     Title = request.form["Title"]
     About = request.form["About"]
     type_Genre = request.form["Genre"]
 
-#add thing lol
+    sql = """
+        INSERT INTO Game (Title, About, Genre)
+        VALUES (?, ?, ?)
+        """
 
     query_db(sql,(Title, About, type_Genre) )
 
-    return redirect("/")
+    return redirect("/Game")
+
+# stuff here --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 @app.route( '/404' )
 def Error():
