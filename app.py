@@ -21,7 +21,6 @@ def query_db(sql,args=(),one=False):
     db.close()
     return (results[0] if results else None) if one else results
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -100,7 +99,7 @@ def simple_User():
 
 #End of Dynamic Routes for User and start of Games ;,D
 
-@app.route( '/Game' )
+@app.route( '/Game', methods=["GET","POST"])
 def Game():
     results = query_db("SELECT * FROM Game ORDER BY type_Genre, Title GLOB '[A-Z,a-z]*' DESC;")
     test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
@@ -111,7 +110,7 @@ def Game():
 
 
 #idk what this is for lol
-@app.route( '/test' )
+@app.route( '/test')
 def test():
     test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
     return redirect("/Game", test=test)
@@ -136,32 +135,39 @@ def Game_list():
 
 #End of Dynamic Routes Games ;,D | Start for making ur own game page!
 
-@app.route( '/regGame' )
+@app.route( '/regGame')
 def regGame():
     #this get the user session and make it to a varblae.
 
     #add the thing about the session :D
-    
 
     type_Genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
 
     return render_template('regGame.html', type_Genre=type_Genre)
 
-@app.route( '/make_Game' )
+@app.route( '/make_Game', methods=["GET","POST"] )
 def make_Game():
 
     Title = request.form["Title"]
     About = request.form["About"]
-    type_Genre = request.form["Genre"]
+    type_Genre = request.form["type_Genre"]
+    wesbite_url = request.form["website_url"]
+
+    filename = request.form["file"].filename
+    file = request.files["file"]
+
+
+    if file:
+        file.save(UPLOAD_FOLDER / filename)
 
     sql = """
-        INSERT INTO Game (Title, About, Genre)
-        VALUES (?, ?, ?)
+        INSERT INTO Game (Title, About, Img, type_Genre, wesbite_url)
+        VALUES (?, ?, ?, ?, ?)
         """
 
-    query_db(sql,(Title, About, type_Genre) )
+    query_db(sql,(Title, About, img, type_Genre, wesbite_url) )
 
-    return redirect("/make_Game")
+    return redirect("/Game")
 
 # stuff here --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

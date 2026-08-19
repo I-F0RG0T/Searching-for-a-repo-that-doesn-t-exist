@@ -13,24 +13,29 @@
 
         <!-- Name of game-->
         <label for="Title">Title</label>
-        <input type="text" id="Tile" name="Tile" placeholder="hai" required>
+        <input type="text" id="Title" name="Title" placeholder="hai" required>
 
         <!-- About-->
         <label for="About">About the game!</label>
         <input type="text" id="About" name="About" placeholder="test">
 
-        <section class="Genrelist">
         <!-- Genre, probaly fix it. IS not showing the genre xd-->
-            <label for="type_Genre">Genre</label>
-            <select id="type_Genre" name="type" required>
-                <option value="" selected disabled>select a genre!</option>
-                {% for type_Genre in type_Genre %}
-                    <option value="{{ type_Genre[1] }}">
-                        {{ type_Genre[1] }}
-                    </option>
-                {% endfor %}
-            </select>
-        </section>
+        <label for="type_Genre">type_Genre</label>
+        <select id="type_Genre" name="type_Genre" required>
+            <option value="" selected disabled>select a genre!</option>
+            
+            {% for type_Genre in type_Genre %}
+                <option value="{{ type_Genre[1] }}">
+                    {{ type_Genre[1] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label for="file"> Image of Game</label>
+        <input type="file" id ="file" name="file" accept="image/*">
+
+        <label for="webiste_url"> Website </label>
+        <input type="url" id="website_url" name="website_url" placeholder="name stuff wesbite" required>
 
         <button type="submit">Button</button>
 
