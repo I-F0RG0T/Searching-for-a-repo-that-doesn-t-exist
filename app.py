@@ -3,12 +3,17 @@ from livereload import Server
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
+
+
 app = Flask(__name__)
 
 #radnon secry key for each session i think
 app.config['SECRET_KEY'] = "SecretkeyXD"
 
 DATABASE = "Data-1.db"
+
+UPLOAD = "static/UPLOAD"
 
 
 def query_db(sql,args=(),one=False):
@@ -153,19 +158,19 @@ def make_Game():
     type_Genre = request.form["type_Genre"]
     wesbite_url = request.form["website_url"]
 
-    filename = request.form["file"].filename
+    file = request.form["file"]
     file = request.files["file"]
 
-
     if file:
-        file.save(UPLOAD_FOLDER / filename)
+
+        file.save(UPLOAD)
 
     sql = """
-        INSERT INTO Game (Title, About, Img, type_Genre, wesbite_url)
+        INSERT INTO Game (Title, About, img_file, type_Genre, wesbite_url)
         VALUES (?, ?, ?, ?, ?)
         """
 
-    query_db(sql,(Title, About, img, type_Genre, wesbite_url) )
+    query_db(sql,(Title, About, file, type_Genre, wesbite_url) )
 
     return redirect("/Game")
 
