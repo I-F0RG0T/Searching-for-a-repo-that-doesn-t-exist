@@ -2,7 +2,7 @@ from flask import Flask , render_template, session, redirect, url_for, request, 
 from livereload import Server
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from pathlib import Path
 
 
 
@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = "SecretkeyXD"
 
 DATABASE = "Data-1.db"
 
-UPLOAD_here ='static'
+UPLOAD_here = Path('static/UPLOAD') 
 
 
 def query_db(sql,args=(),one=False):
@@ -169,7 +169,7 @@ def make_Game():
     if file:
         print("hellooooo there")
         print( file.save)
-        file.save(UPLOAD_here)
+        file.save(UPLOAD_here / filename)
 
     sql = """
         INSERT INTO Game (Title, About, img_file, type_Genre, wesbite_url)
