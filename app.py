@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = "SecretkeyXD"
 
 DATABASE = "Data-1.db"
 
-UPLOAD = "static/UPLOAD"
+UPLOAD_here ='static'
 
 
 def query_db(sql,args=(),one=False):
@@ -158,18 +158,25 @@ def make_Game():
     type_Genre = request.form["type_Genre"]
     wesbite_url = request.form["website_url"]
 
-    file = request.form["file"]
     file = request.files["file"]
+    filename = request.files["file"].filename
+
+    print("test test")
+    print(file)
+    print(filename)
+    print(UPLOAD_here)
 
     if file:
-
-        file.save(UPLOAD)
+        print("hellooooo there")
+        print( file.save)
+        file.save(UPLOAD_here)
 
     sql = """
         INSERT INTO Game (Title, About, img_file, type_Genre, wesbite_url)
         VALUES (?, ?, ?, ?, ?)
         """
 
+    print(query_db)
     query_db(sql,(Title, About, file, type_Genre, wesbite_url) )
 
     return redirect("/Game")
