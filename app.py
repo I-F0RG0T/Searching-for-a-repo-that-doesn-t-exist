@@ -20,7 +20,9 @@ def query_db(sql,args=(),one=False):
     #connect and query- will retun one item if one=true and can accept arguments as tuple
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
+
     cursor.execute(sql, args)
+    
     results = cursor.fetchall()
     db.commit()
     db.close()
@@ -53,21 +55,24 @@ def signup():
 def Login(): 
     if request.method == "POST":
 
-
         Username = request.form['Username']
         Password = request.form['Password']
 
-        print(Username)
-
         sql = "SELECT * from User WHERE User = ?"
-        User = query_db(sql=sql,args=(Username,),one=True)
+        Username = query_db(sql=sql,args=(Username,),one=True)
+
+        print(Username)
+        print("help help")
         
-        if User:
-            if check_password_hash(User[2],Password):#check the password thing. i think is worng
-                session['User'] = User
+        #v i think this is wrong!! 
+        if Username:
+            if check_password_hash(Username[2],Password):#check the password thing. i think is worng
+                session['Username'] = Username
                 flash('good')
             else:
                 flash('bad')
+        else:
+            flash("this doesn't work ill cry")
 
     return render_template('Login.html')
 

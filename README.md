@@ -24,6 +24,7 @@ Sign in and logn in page:
 - https://www.w3schools.com/Tags/tryit.asp?filename=tryhtml5_input_type_text
 - https://www.youtube.com/watch?v=2O8pkybH6po - brocode
 - https://www.youtube.com/watch?v=qAR97gJX4yk -cs brain
+- https://www.youtube.com/watch?v=lLc_jHkifRc - idk, i use this for form thing
 
 
 DYAMICROUTES:
