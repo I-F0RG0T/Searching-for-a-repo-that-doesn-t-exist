@@ -58,21 +58,24 @@ def Login():
         Username = request.form['Username']
         Password = request.form['Password']
 
-        sql = "SELECT * from User WHERE User = ?"
+        print("test tes ttes")
+        print(Username)
+
+        sql = "SELECT * from User WHERE Username = ?"
         Username = query_db(sql=sql,args=(Username,),one=True)
 
-        print(Username)
         print("help help")
+        print(Username)
         
         #v i think this is wrong!! 
         if Username:
             if check_password_hash(Username[2],Password):#check the password thing. i think is worng
                 session['Username'] = Username
-                flash('good')
+                flash('Sign in good!!')
             else:
-                flash('bad')
+                flash('Wrong password!! try again! :^')
         else:
-            flash("this doesn't work ill cry")
+            flash("You dont have a account with this!")
 
     return render_template('Login.html')
 
@@ -166,23 +169,15 @@ def make_Game():
     file = request.files["file"]
     filename = request.files["file"].filename
 
-    print("test test")
-    print(file)
-    print(filename)
-    print(UPLOAD_here)
-
     if file:
-        print("hellooooo there")
-        print( file.save)
         file.save(UPLOAD_here / filename)
 
     sql = """
-        INSERT INTO Game (Title, About, img_file, type_Genre, wesbite_url)
+        INSERT INTO Game (Title, About, filename, type_Genre, wesbite_url)
         VALUES (?, ?, ?, ?, ?)
         """
-
-    print(query_db)
-    query_db(sql,(Title, About, file, type_Genre, wesbite_url) )
+    
+    query_db(sql,(Title, About, filename, type_Genre, wesbite_url) )
 
     return redirect("/Game")
 
