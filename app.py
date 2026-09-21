@@ -99,12 +99,12 @@ def user():
 @app.route( '/User/<int:id>' )
 def User_list(id):
     sql = f"SELECT * FROM User WHERE id = {id}"
-    GaTitle = query_db("SELECT Title FROM Game")
+    gamefav = query_db("SELECT Game_fav FROM User")
 
     User = query_db(sql, one=True)
     if User == None:
         exit(404)
-    return render_template('simple_User.html', User=User, GaTitle=GaTitle)#give the data a templagte or like looks
+    return render_template('simple_User.html', User=User, gamefav=gamefav)#give the data a templagte or like looks
 
 @app.route( '/simple_User' )
 def simple_User():

@@ -9,31 +9,30 @@
         <div>
             <h1> This is {{ User[1] }}</h1>
         </div>
-        <div>
-            <p> {{User[3]}} </p>
-        </div>
+       
     </section>
 
 
     <section>
-        <div class="rem">
-            <h1> Recommeds!</h1>
-            {% for Game in  GaTitle %}
+        <div class="Fave">
+            <h1> User faves...</h1>
+            {% for User in gamefav %}
                 <li>  
-                    <a href="Game/{{Game[0]}}">{{ Game[0]}}</a>
+                    {{ User[3]}}
                 </li>  
             {% endfor %}
         </div>
 
 
-        <div class="Fav">
-            <h1> User faves...</h1>
+        <div class="Rem">
+            <h1> User recmoned...</h1>
             <div>
                 <li>  
                     <p>list like a fa game (has to be one),genre, studios!</p>
                 </li>
             </div>
         </div>
+
     </section>
 </body>
 
