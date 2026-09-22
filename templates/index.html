@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 {% block content%}
+
+<!-- big screeen is evil!! fix pls :p -->
+
     <body>
         <section class="HEADING">
             <h1> About us!!</h1>
         </section>
         <section>
             <div class="Index">
-                <p class="box"> You're good at English when you know the difference between a man eating chicken and a man-eating chicken.
-I'm worried by the fact that my daughter looks to the local carpet seller as a role model. She could hear him in the shower singing with a joy she hoped he'd retain after she delivered the news.
-Before he moved to the inner city, he had always believed that security complexes were psychological. His get rich quick scheme was to grow a cactus farm.
-When I cook spaghetti, I like to boil it a few minutes past al dente so the noodles are super slippery.
-The furnace repairman indicated the heating system was acting as an air conditioner. She cried diamonds. 
-<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                <section class="box"> 
+                    <p> to Website for Games! We are a wesbite fot games! Or a website that 
+                    has any types of games from across the inernet! From RPG dnd types games to your cozy romoica visial novals!
+                    We are aslo allow user too put games on here that we haven't have on here or didn't know about it! 
+                    </p><p>
+                    Everyone should be allow to see other games that is not known or is super well know to everyone as it
+                    allow small stuido or inda devploers a chance to have a spotlight and reach other user online who love whatver
+                    game geners they like!
+                    </p><p>
+                    If you want to join our small community, sign up now! If not check our catalog of game here! 
+                    </p>
+                </section>
+
+
                 <img class = "box" src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
                 <img class= "box" src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
                 <img class= "box" src="{{ url_for('static', filename= 'img-3.jpg') }}" alt="gaming" >
@@ -27,5 +35,10 @@ The furnace repairman indicated the heating system was acting as an air conditio
             <form action="/search" method="get">
             <input type="text" name="Game">
         </section>
+
+        <section class="wjhat">
+            <a href="Game"> Games</a>
+        </section>
+
     </body>
 {% endblock %}

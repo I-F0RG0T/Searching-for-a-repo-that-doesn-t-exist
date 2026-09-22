@@ -8,13 +8,13 @@
     </section>
 
     <lis>
-        {% for Genre in test %}
-            <p>{{ Genre[1] }}</p>
+        {% for Genre in Genres %}
+            <p>{{ Genre[*] }}</p>
         {% endfor %}
     </lis>
 
     <lis class="Genre">
-        {% for Game in results %}
+        {% for Game in Genre %}
             <dt> {{ Game[4]}}</dt>
                  <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
         {% endfor %}
@@ -22,6 +22,11 @@
 
 </body>
 {% endblock %}
+
+
+
+
+
 
 <p>
     tilte of the genre<br>

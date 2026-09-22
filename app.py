@@ -114,12 +114,16 @@ def simple_User():
 
 @app.route( '/Game', methods=["GET","POST"])
 def Game():
+    #join left here
     results = query_db("SELECT * FROM Game ORDER BY type_Genre, Title GLOB '[A-Z,a-z]*' DESC;")
-    test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
+    Genres = query_db("""SELECT * FROM Genre """)
 
-    print(Game)
+    for Genre in Genres:
+        test = query_db("SELECT * FROM Game WHERE Game.Genre = Genre")
+        return(test)
 
-    return render_template('Game.html', results=results)
+
+    return render_template('Game.html', results=results, Genre=Genre)
 
 
 #idk what this is for lol
