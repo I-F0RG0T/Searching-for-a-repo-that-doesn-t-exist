@@ -7,36 +7,23 @@
             <a href="regGame">form!</a> </p>
     </section>
 
-    <lis>
-        {% for Genre in Genres %}
-            <p>{{ Genre[*] }}</p>
-        {% endfor %}
-    </lis>
-
     <lis class="Genre">
-        {% for Game in Genre %}
-            <dt> {{ Game[4]}}</dt>
-                 <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
+        {% for Game in results %}
+            <lis> {{ Game[4]}}</lis>
+                 <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
         {% endfor %}
     </lis>
 
+    <h1>Horror</h1>
+    {% for Game in Genres %}
+        <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+    {% endfor %}
+
+    <h1>FSP</h1>
+    {% for Game in FShooter %}
+        <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+    {% endfor %}
+    
 </body>
+    
 {% endblock %}
-
-
-
-
-
-
-<p>
-    tilte of the genre<br>
-    kist of games under the genre.
-</p>
-
-                <dl>
-                    <dt> {{ Game[4]}}</dt>
-                    <dd><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></dd>
-                </dl>
-            </div>
-
-            </lis>  {{ Game[4]}} </lis>

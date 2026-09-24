@@ -3,6 +3,9 @@ I do stuff here assegemnt. B)
 
 20/6/16 - srpint 3 thing ends. pls add more lol
 
+
+
+
 Code from other people or the web i use :D
 
 I lowkey use w3schools for everything :p 
@@ -97,22 +100,3 @@ def regGame():
     user = session.get("User", None)
     if not user:
         flash("not log in :p", category ="warning")
-
-
-        
-
-
-    Title = request.form["Title"]
-    About = request.form["About"]
-    type_Genre = request.form["Genre"]
-
-    filename = request.files["file"].filename
-    file  = request.files["file"]
-
-
-
-
-
-    </form>
-
-</section>

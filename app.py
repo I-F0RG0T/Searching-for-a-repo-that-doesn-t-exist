@@ -115,22 +115,18 @@ def simple_User():
 @app.route( '/Game', methods=["GET","POST"])
 def Game():
     #join left here
-    results = query_db("SELECT * FROM Game ORDER BY type_Genre, Title GLOB '[A-Z,a-z]*' DESC;")
-    Genres = query_db("""SELECT * FROM Genre """)
+    results = query_db("SELECT * FROM Game;")
 
+    Genres = query_db("SELECT * FROM Genre;")
     for Genre in Genres:
-        test = query_db("SELECT * FROM Game WHERE Game.Genre = Genre")
-        return(test)
+        Genres = query_db("SELECT * FROM Game WHERE Game.type_Genre = 1")
 
+    FShooter = query_db("SELECT * FROM Game;")
+    for Genre in FShooter:
+        FShooter = query_db("SELECT * FROM Game WHERE Game.type_Genre = 2")
 
-    return render_template('Game.html', results=results, Genre=Genre)
+    return render_template('Game.html', results=results, Genres=Genres, FShooter=FShooter )
 
-
-#idk what this is for lol
-@app.route( '/test')
-def test():
-    test = query_db("""SELECT id, type FROM Genre ORDER BY type""")
-    return redirect("/Game", test=test)
 
 #More games page related stiff. ------------------->>>>>>>....
 
