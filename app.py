@@ -96,10 +96,10 @@ def user():
 
     return render_template('UserPage.html', results=results)
 
-@app.route( '/User/<int:id>' )
-def User_list(id):
-    sql = f"SELECT * FROM User WHERE id = {id}"
-    gamefav = query_db("SELECT Game_fav FROM User")
+@app.route( '/User/<int:user_id>' )
+def User_list(user_id):
+    sql = f"SELECT * FROM User WHERE user_id = {user_id}"
+    gamefav = query_db("SELECT * FROM Faves RIGHT JOIN User ON Faves.user_id = User.user_id;")
 
     User = query_db(sql, one=True)
     if User == None:

@@ -12,13 +12,14 @@
        
     </section>
 
-
-    <section>
+    <section class="stuids">
         <div class="Fave">
             <h1> User faves...</h1>
-            {% for User in gamefav %}
+            <p>hai</p>
+            {% for Faves in gamefav %}
                 <li>  
-                    {{ User[3]}}
+                    {{ Faves[1]}}
+                    {{ Faves[0]}}
                 </li>  
             {% endfor %}
         </div>
