@@ -70,23 +70,6 @@ flash('ppassjidsajd")
 
 
 
-@app.route( '/make_Game' )
-def make_Game():
-
-    id = session["User"]['uuid']
-
-    Title = request.form["Title"]
-    About = request.form["About"]
-    type_Genre = request.form["Genre"]
-
-    filename = request.files["file"].filename
-    file  = request.files["file"]
-
-    file.save(UPLOAD_FOLDER / filename)
-
-    return render_template('regGame.html')
-
-
 
 3/8/26 -
 - the "return redirect("/Game")" keep sending me back to thing. which is tycpially what it meant to do, but like doesn't say on page that the user need to sign in, only on the game page :p
@@ -100,3 +83,9 @@ def regGame():
     user = session.get("User", None)
     if not user:
         flash("not log in :p", category ="warning")
+
+
+{% if session ['User']['username'] %}
+
+
+{% endif %}

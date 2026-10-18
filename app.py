@@ -99,8 +99,8 @@ def user():
 @app.route( '/User/<int:user_id>' )
 def User_list(user_id):
     sql = f"SELECT * FROM User WHERE user_id = {user_id}"
-    gamefav = query_db("SELECT * FROM Faves RIGHT JOIN User ON Faves.user_id = User.user_id;")
-
+    gamefav = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.id = Faves.game WHERE Faves.user_id = {user_id};")
+  
     User = query_db(sql, one=True)
     if User == None:
         exit(404)
