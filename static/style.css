@@ -105,6 +105,19 @@
 
 /*user*/
 
+section.USER{
+    margin: 15px 5px;
+    background-color: #04AA6D;
+    border-radius: 5%;
+    
+}
+img.USER{
+    width: 8rem;
+    height: 8rem;
+    margin: 20px;
+    border-radius: 25%;
+}
+
 .UserBox{
     background-color: #67a8dd;
     color: #101637;
