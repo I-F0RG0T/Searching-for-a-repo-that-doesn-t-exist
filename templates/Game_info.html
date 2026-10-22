@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content%}
 <body>
+    {% for imgs in imgs %}
+                <li>
+                    {{ imgs[0]}}
+                 </li>
+    {% endfor %}
+
+    <img src="{{ url_for('static', filename='UPLOAD/GAMEIMG/ = imgs[0]') }}" alt="hello" width="100" height="100">
+
      <section class="SumGame">
         <div>
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="100" height="100">

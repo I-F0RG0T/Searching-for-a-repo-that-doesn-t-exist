@@ -1,4 +1,8 @@
 
+p {
+    background-color: #67a8dd;
+    color: #101637;
+}
 
 /*NAVBAR !!*/
 
@@ -109,13 +113,21 @@ section.USER{
     margin: 15px 5px;
     background-color: #04AA6D;
     border-radius: 5%;
-    
+
 }
 img.USER{
     width: 8rem;
     height: 8rem;
     margin: 20px;
     border-radius: 25%;
+}
+
+.Header{
+    display: flex;    
+}
+
+h1.Header{
+    text-align: center;
 }
 
 .UserBox{
@@ -126,15 +138,9 @@ img.USER{
     list-style-type: none;
 }
 
-
-p {
-    background-color: #67a8dd;
-    color: #101637;
-}
-
-.rem{
-    background-color: #0edc1f;
-    color: #101637;
+.Fave {
+    list-style-type: none;
+    padding: 25px 10px;
 }
 
 

@@ -3,37 +3,23 @@
 
 <body>
     <section class="USER">
-        <section>
-            <div>
-                <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" class="USER">
-                <h1 class="USER"> This is {{ User[1] }}</h1>
-            </div>
-        
+        <section class="Header">
+            <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" class="USER">
+            <h1 class="Header"> This is {{ User[1] }}</h1>
         </section>
 
-        <section class="stuids">
-            <div class="Fave">
-                <h1> User faves...</h1>
-                <p>hai</p>
-                {% for Faves in gamefav %}
-                    <li>
-                        <h2>{{ Faves[1]}}</h2>
-                        {{ Faves[2]}}
-                        {{ Faves[3]}}
-                    </li>
-                {% endfor %}
-        
-
-            <div class="Rem">
-                <h1> User recmoned...</h1>
-                <div>
-                    <li>  
-                        <p>list like a fa game (has to be one),genre, studios!</p>
-                    </li>
-                </div>
-            </div>
-
+        <section class="Fave">
+            <h1> User faves...</h1>
+            <p>hai</p>
+            {% for Faves in gamefav %}
+                <li>
+                    <h2>{{ Faves[1]}}</h2>
+                    {{ Faves[2]}}
+                    {{ Faves[3]}}
+                 </li>
+             {% endfor %}
         </section>
+
     </section>
 </body>
 

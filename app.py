@@ -83,8 +83,10 @@ def Login():
 
 @app.route('/logout')
 def logout():
+    #everyone thinks this is wrong. Pls like
     #just clear the username from the session and redirect back to the home page
     session['User'] = None
+    flash("out pls")
     return redirect('/')
 
 
@@ -99,7 +101,7 @@ def user():
 @app.route( '/User/<int:user_id>' )
 def User_list(user_id):
     sql = f"SELECT * FROM User WHERE user_id = {user_id}"
-    gamefav = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.id = Faves.game WHERE Faves.user_id = {user_id};")
+    gamefav = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.game_id = Faves.game WHERE Faves.user_id = {user_id};")
   
     User = query_db(sql, one=True)
     if User == None:
@@ -130,18 +132,20 @@ def Game():
 
 #More games page related stiff. ------------------->>>>>>>....
 
-@app.route( '/Game/<int:id>' )
-def Game_list(id):
-    sql = f"SELECT * FROM Game WHERE id = {id}"
+@app.route( '/Game/<int:game_id>' )
+def Game_list(game_id):
+    sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
 
     User = query_db("SELECT * FROM User")
+    imgs = query_db(f"SELECT filename FROM game RIGHT JOIN gamesimg ON game.game_id = gamesimg.game_id;")
+    print(imgs)
 
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
 
 
-    return render_template('Game_info.html', Game=Game, User=User)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User, imgs=imgs)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')
