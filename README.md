@@ -75,7 +75,6 @@ flash('ppassjidsajd")
 - the "return redirect("/Game")" keep sending me back to thing. which is tycpially what it meant to do, but like doesn't say on page that the user need to sign in, only on the game page :p
 
 
-
 add this in when im done
 @app.route( '/regGame' )
 def regGame():
@@ -89,3 +88,7 @@ def regGame():
 
 
 {% endif %}
+
+
+
+SELECT filename FROM game RIGHT JOIN gamesimg ON game.game_id = gamesimg.game_id;"

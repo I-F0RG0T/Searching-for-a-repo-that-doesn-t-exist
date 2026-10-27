@@ -144,7 +144,14 @@ h1.Header{
 }
 
 
-/*list of games*/
+/*games page*/
+
+.GAMEBANNER{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 5px;
+}
 
 h2.Genre{
     background-color: #67a8dd;
@@ -153,17 +160,27 @@ h2.Genre{
 .GameGrid{
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 33.3% 33.3% 33.3%;
-    background-color: #11c240;
+    height: 50px;
     padding: 20px;
     margin: 20px;
 }
 
 .GameGrid img{
-   width: 100%;
-   height: 100%;
-   overflow: hidden;   
+   width: 200px;
+   height: 200px;
+   display: center;
+   border-radius: 10px;
+   overflow: hidden; 
+   margin: auto;
+   padding: 10px;
 }
+
+.GameReview {
+    width: 200px;
+    height: 200px;
+    background-color: #67a8dd;
+}
+
 
 /*regGame ccs!! i cry*/
 

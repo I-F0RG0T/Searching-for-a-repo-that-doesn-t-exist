@@ -116,7 +116,6 @@ def simple_User():
 
 @app.route( '/Game', methods=["GET","POST"])
 def Game():
-    #join left here
     results = query_db("SELECT * FROM Game;")
 
     Genres = query_db("SELECT * FROM Genre;")
@@ -135,17 +134,15 @@ def Game():
 @app.route( '/Game/<int:game_id>' )
 def Game_list(game_id):
     sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
-
+    test = query_db(f"SELECT filename FROM game RIGHT JOIN gamesimg ON game.game_id = gamesimg.game_id WHERE gamesimg.game_id = {game_id};")
     User = query_db("SELECT * FROM User")
-    imgs = query_db(f"SELECT filename FROM game RIGHT JOIN gamesimg ON game.game_id = gamesimg.game_id;")
-    print(imgs)
 
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
 
 
-    return render_template('Game_info.html', Game=Game, User=User, imgs=imgs)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User, test=test)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')
@@ -189,7 +186,9 @@ def make_Game():
 
 @app.route( '/404' )
 def Error():
+    
     return render_template('404.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
