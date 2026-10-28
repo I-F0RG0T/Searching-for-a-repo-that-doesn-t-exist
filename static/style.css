@@ -160,7 +160,6 @@ h2.Genre{
 .GameGrid{
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 50px;
     padding: 20px;
     margin: 20px;
 }
@@ -176,9 +175,9 @@ h2.Genre{
 }
 
 .GameReview {
-    width: 200px;
-    height: 200px;
+    padding: 15px;
     background-color: #67a8dd;
+    list-style-type: none;
 }
 
 
