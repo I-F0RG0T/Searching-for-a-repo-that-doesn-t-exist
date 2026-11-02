@@ -4,21 +4,23 @@
     background-color: rgb(75, 179, 244);
     overflow: hidden;
     position: sticky;
-    padding: 10px;
+    padding: 5px;
 }
 
 .navbar ul{
     list-style-type: none;
     margin: 10px;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .navbar a{
     display: block;
     padding: 15px;
+    margin: 5px;
     text-align: center;
     display:block;
     text-decoration: none; 
+    color:#101637;
 }
 
 .navbar img{
@@ -42,6 +44,7 @@
 
 .navbar a:hover{
     background-color: rgb(255, 0, 0);
+    border-radius: 20px;
 }
 
 /*Heading for about page*/
@@ -109,27 +112,58 @@
 }
 
 
-/*end of the gird*/
+/*Sign up and log in*/
 
-.searching{
-    border: 10px;
-    box-sizing: 20px;
+.signform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    padding-top: 3rem;
+    margin: 4rem;
+    background-color: #67a8dd;
+    font-size: 30px;
+    border: solid #101637;
+    border-width: 15px 20px;
+    border-radius: 10px;
 }
 
-
-
-.button{
-    background-color: #04AA6D;
-    border: none;
-    color: rgb(60, 0, 200);
-    padding: 15px 32px;
+h3{
+    font-size: 4rem;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    padding: 2rem;
+    background-image: url('bluefire.jpg');
+    background-position: center;
+    color: #ffffff;
+
+}
+
+.signform p{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.signform input{
+    width: 70%;
+    padding: 10px;
+    outline: none;
+    margin: 20px;
+    border: 2px solid #2e3457;
+    border-radius: 3px;
+    align-items: left;
+}
+
+.signform button{
+    width: 20%;
+    padding: 10px;
+    text-align-last: center;
+    border: none;
+    border-radius: 3px;
+    background-color: #ffffff;
     cursor: pointer;
 }
+
 
 /*user*/
 

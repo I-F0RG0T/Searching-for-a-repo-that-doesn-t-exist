@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block content%}
-<form action="/signup" method="POST">
-    <label for="Username">Username</label>
-    <input type="text" name="Username">
-    
-    <label for="Password">Password</label>
-    <input type="text" name="Password">
 
-    <button type="submit">:p</button>
-</form>
+<h3> Epic Sign up!!</h3>
+
+<section class="signform">
+    <p> Do YOU dont have an account with us? Well fear not! fill this form and you can have you OWN
+        account!! </p>
+    <form action="/signup" method="POST">
+        <label for="Username">Username</label>
+        <input type="text" name="Username" placeholder="User">
+        
+        <label for="Password">Password</label>
+        <input type="text" name="Password" placeholder="Secret Code">
+
+        <button type="submit">Button</button>
+    </form>
+</section>
 {% endblock %}

@@ -1,17 +1,11 @@
 # Searching-for-a-repo-that-doesn-t-exist
 I do stuff here assegemnt. B)
 
-20/6/16 - srpint 3 thing ends. pls add more lol
-
-
-
-
 Code from other people or the web i use :D
 
 I lowkey use w3schools for everything :p 
 
 Vedya and lily from my class help me and give some code stuff. :D
-
 
 Navigation bar:
 - https://www.w3schools.com/howto/howto_js_topnav.asp
