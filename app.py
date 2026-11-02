@@ -45,7 +45,7 @@ def signup():
 
         sql = "INSERT INTO User (Username, Password) VALUES (?,?)"
         query_db(sql,(Username, hashed_password))
-        flash("signup goood")
+        flash("You have Sign up!")
     return render_template('signup.html')
 
 
@@ -64,16 +64,14 @@ def Login():
         sql = "SELECT * from User WHERE Username = ?"
         Username = query_db(sql=sql,args=(Username,),one=True)
 
-        print("help help")
-        print(Username)
         
         #v i think this is wrong!! 
         if Username:
             if check_password_hash(Username[2],Password):#check the password thing. i think is worng
                 session['Username'] = Username
-                flash('Sign in good!!')
+                flash('You are sign in!')
             else:
-                flash('Wrong password!! try again! :^')
+                flash('Something went wrong! Try again!')
         else:
             flash("You dont have a account with this!")
 
@@ -118,15 +116,34 @@ def simple_User():
 def Game():
     results = query_db("SELECT * FROM Game;")
 
-    Genres = query_db("SELECT * FROM Genre;")
-    for Genre in Genres:
-        Genres = query_db("SELECT * FROM Game WHERE Game.type_Genre = 1")
+#List of like genres. I didn't know how to make like sectiosn for genres unless it like this.
+    Horror = query_db("SELECT * FROM Genre;")
+    for Genre in Horror:
+        Horror = query_db("SELECT * FROM Game WHERE Game.type_Genre = 1")
+        #the quert_db for this one and the many under this is telling sql that it should grab the games
+        #if they are in 'game-type_genre = [whatver number it is]'. which is the id of the genre type.
 
-    FShooter = query_db("SELECT * FROM Game;")
-    for Genre in FShooter:
-        FShooter = query_db("SELECT * FROM Game WHERE Game.type_Genre = 2")
+    Fsp = query_db("SELECT * FROM Game;")
+    for Genre in Fsp:
+        Fsp = query_db("SELECT * FROM Game WHERE Game.type_Genre = 2")
 
-    return render_template('Game.html', results=results, Genres=Genres, FShooter=FShooter )
+    Roleplaying = query_db("SELECT * FROM Genre;")
+    for Genre in Roleplaying:
+        Roleplaying = query_db("SELECT * FROM Game WHERE Game.type_Genre = 3")
+
+    Adventure = query_db("SELECT * FROM Game;")
+    for Genre in Adventure:
+        Adventure = query_db("SELECT * FROM Game WHERE Game.type_Genre = 4")
+
+    Rpg = query_db("SELECT * FROM Genre;")
+    for Genre in Rpg:
+        Rpg = query_db("SELECT * FROM Game WHERE Game.type_Genre = 5")
+    
+    Casical = query_db("SELECT * FROM Game;")
+    for Genre in Casical:
+        Casical = query_db("SELECT * FROM Game WHERE Game.type_Genre = 6")
+
+    return render_template('Game.html', results=results, Horror=Horror, Fsp=Fsp, Roleplaying=Roleplaying, Adventure=Adventure, Rpg=Rpg, Casical=Casical )
 
 
 #More games page related stiff. ------------------->>>>>>>....

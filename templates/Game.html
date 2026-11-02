@@ -1,29 +1,54 @@
 {% extends 'base.html' %}
 {% block content%}
 <body>
-    <p> bla blha</p>
-    <section>          
-        <p> Games here! Lises of games!! If we dont have a game listed here. Please fill out this 
+    <section class="GameHeading">   
+        <h1> Game Page</h1>       
+        <p> Here lises of games!! If we dont have a game listed here. Please fill out this 
             <a href="regGame">form!</a> </p>
     </section>
 
-    <lis class="Genre">
+    <section class="Gamelist">
+        <h1>Horror</h1>
+        {% for Game in Horror %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+
+        <h1>FSP</h1>
+        {% for Game in Fsp %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+        
+        <h1>Roleplaying</h1>
+        {% for Game in Roleplaying %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+
+        <h1>Adventure</h1>
+        {% for Game in Adventure %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+
+        <h1>Rpg</h1>
+        {% for Game in Rpg %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+
+        <h1>Casical</h1>
+        {% for Game in Casical %}
+            <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
+        {% endfor %}
+    </section>
+    
+    
+</body>
+
+
+<lis class="Genre">
         {% for Game in results %}
             <lis> {{ Game[4]}}</lis>
                  <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
         {% endfor %}
     </lis>
 
-    <h1>Horror</h1>
-    {% for Game in Genres %}
-        <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
-    {% endfor %}
-
-    <h1>FSP</h1>
-    {% for Game in FShooter %}
-        <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
-    {% endfor %}
-    
-</body>
     
 {% endblock %}
