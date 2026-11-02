@@ -165,8 +165,6 @@ def make_Game():
     Title = request.form["Title"]
     About = request.form["About"]
     type_Genre = request.form["type_Genre"]
-    wesbite_url = request.form["website_url"]
-
     file = request.files["file"]
     filename = request.files["file"].filename
 
@@ -174,11 +172,11 @@ def make_Game():
         file.save(UPLOAD_here / filename)
 
     sql = """
-        INSERT INTO Game (Title, About, filename, type_Genre, wesbite_url)
+        INSERT INTO Game (Title, About, filename, type_Genre )
         VALUES (?, ?, ?, ?, ?)
         """
     
-    query_db(sql,(Title, About, filename, type_Genre, wesbite_url) )
+    query_db(sql,(Title, About, filename, type_Genre ) )
 
     return redirect("/Game")
 
