@@ -24,6 +24,7 @@ Sign in and logn in page:
 - https://www.youtube.com/watch?v=2O8pkybH6po - brocode
 - https://www.youtube.com/watch?v=qAR97gJX4yk -cs brain
 - https://www.youtube.com/watch?v=lLc_jHkifRc - idk, i use this for form thing
+- https://www.youtube.com/watch?v=wZGCbNpaJK4 - css part
 
 
 DYAMICROUTES:
