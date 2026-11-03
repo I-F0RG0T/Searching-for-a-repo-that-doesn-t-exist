@@ -206,12 +206,22 @@ h3{
     background-color: #67a8dd;
     margin: 0 15px 0 15px;
     border: #2c4452 solid 5px;
+    padding-top: 10px;
+    padding-bottom: 2rem;
 }
 
 .Gamelist h1{
     margin: 0;
     padding: 5px;
-    font-size: 10rem;
+    padding-left: 1rem;
+    padding-bottom: 5px;
+    font-size: 3rem;
+}
+
+.Gamelist lis{
+    list-style-type: none;
+    padding: 2rem;
+    margin: 5px;
 }
 
 

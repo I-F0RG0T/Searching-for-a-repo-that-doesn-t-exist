@@ -151,7 +151,6 @@ def Game():
 @app.route( '/Game/<int:game_id>' )
 def Game_list(game_id):
     sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
-    test = query_db(f"SELECT filename FROM game RIGHT JOIN gamesimg ON game.game_id = gamesimg.game_id WHERE gamesimg.game_id = {game_id};")
     User = query_db("SELECT * FROM User")
 
     Game = query_db(sql, one=True)
@@ -159,7 +158,7 @@ def Game_list(game_id):
         exit(404)
 
 
-    return render_template('Game_info.html', Game=Game, User=User, test=test)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')

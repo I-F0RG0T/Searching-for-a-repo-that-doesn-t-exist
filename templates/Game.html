@@ -42,6 +42,12 @@
     
 </body>
 
+    
+{% endblock %}
+
+
+
+
 
 <lis class="Genre">
         {% for Game in results %}
@@ -49,6 +55,3 @@
                  <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
         {% endfor %}
     </lis>
-
-    
-{% endblock %}
