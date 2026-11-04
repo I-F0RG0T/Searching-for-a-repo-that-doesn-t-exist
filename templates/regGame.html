@@ -19,13 +19,13 @@
         <label for="About">About the game!</label>
         <input type="text" id="About" name="About" placeholder="test">
 
-        <!-- Genre, probaly fix it. IS not showing the genre xd-->
+        <!-- Genre! that drop in a drop list.s-->
         <label for="type_Genre">type_Genre</label>
         <select id="type_Genre" name="type_Genre" required>
             <option value="" selected disabled>select a genre!</option>
-            
             {% for type_Genre in type_Genre %}
-                <option value="{{ type_Genre[1] }}">
+                <option value="{{ type_Genre[0] }}">
+            <!-- this is different becasue if i put [1] then [0]. it will put the namae of the genre rather than the genre id-->
                     {{ type_Genre[1] }}
                 </option>
             {% endfor %}

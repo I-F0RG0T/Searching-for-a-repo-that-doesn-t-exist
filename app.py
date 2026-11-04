@@ -58,18 +58,18 @@ def Login():
         Username = request.form['Username']
         Password = request.form['Password']
 
-        print("test tes ttes")
-        print(Username)
-
-        sql = "SELECT * from User WHERE Username = ?"
-        Username = query_db(sql=sql,args=(Username,),one=True)
+        sql = "SELECT Username, Password from User WHERE Username = ?"
+        User = query_db(sql=sql,args=(Username,),one=True)
 
         
         #v i think this is wrong!! 
-        if Username:
-            if check_password_hash(Username[2],Password):#check the password thing. i think is worng
-                session['Username'] = Username
+        if User:
+            if check_password_hash(User[0], Password):
+                print("hello")
+                print(User)
+                session['User']['Password'] = User
                 flash('You are sign in!')
+                return redirect("/")
             else:
                 flash('Something went wrong! Try again!')
         else:
@@ -84,7 +84,7 @@ def logout():
     #everyone thinks this is wrong. Pls like
     #just clear the username from the session and redirect back to the home page
     session['User'] = None
-    flash("out pls")
+    flash("You have log out!")
     return redirect('/')
 
 
@@ -119,7 +119,7 @@ def Game():
 #List of like genres. I didn't know how to make like sectiosn for genres unless it like this.
     Horror = query_db("SELECT * FROM Genre;")
     for Genre in Horror:
-        Horror = query_db("SELECT * FROM Game WHERE Game.type_Genre = 1")
+        Horror = query_db(f"SELECT * FROM Game WHERE Game.type_Genre = 1")
         #the quert_db for this one and the many under this is telling sql that it should grab the games
         #if they are in 'game-type_genre = [whatver number it is]'. which is the id of the genre type.
 
@@ -186,10 +186,11 @@ def make_Game():
 
     if file:
         file.save(UPLOAD_here / filename)
-
+    
+    print(filename, file)
     sql = """
         INSERT INTO Game (Title, About, filename, type_Genre )
-        VALUES (?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?)
         """
     
     query_db(sql,(Title, About, filename, type_Genre ) )
