@@ -1,7 +1,22 @@
 
 <nav class="navbar">
     <img src="{{ url_for('static', filename= 'test-1-2.jpg') }}" alt="Epik Lago">
-    {% if not session['user'] %}
+    {% if not session.User %}
+        <div>
+            <ul>
+                <li><a class="nav-left" href="/">About</a></li>
+                <li><a class="nav-left" href="/Game">Games</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a class="nav-right" href="/Login">Login</a></li>
+                <li><a class="nav-right" href="/signup">Signup</a></li>
+            </ul>
+        </div>
+
+    {% else %}
+
         <div>
             <ul>
                 <li><a class="nav-left" href="/">About</a></li>
@@ -13,7 +28,6 @@
             <ul>
                 <li><a class="nav-right" href="/logout">logout</a></li>
                 <li><a class="nav-right" href="/Login">Login</a></li>
-    {% else %}
                 <li><a class="nav-right" href="/signup">Signup</a></li>
             </ul>
         </div>

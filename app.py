@@ -64,10 +64,9 @@ def Login():
         
         #v i think this is wrong!! 
         if User:
-            if check_password_hash(User[0], Password):
-                print("hello")
-                print(User)
-                session['User']['Password'] = User
+            #check the has and the password and see if it macth. It only works with thr hash one thought becasue the first user osnt hasrh and is working becasue of teh hasrd.
+            if check_password_hash(User[1], Password):
+                session['User'] = User
                 flash('You are sign in!')
                 return redirect("/")
             else:
@@ -81,7 +80,6 @@ def Login():
 
 @app.route('/logout')
 def logout():
-    #everyone thinks this is wrong. Pls like
     #just clear the username from the session and redirect back to the home page
     session['User'] = None
     flash("You have log out!")
