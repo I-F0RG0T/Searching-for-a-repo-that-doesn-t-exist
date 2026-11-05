@@ -2,6 +2,14 @@ a{
     color: rgb(255, 238, 0);
 }
 
+.warning {
+    text-align: center;
+    margin: 18rem;
+    padding: 2rem;
+    font-size: 45px;
+    background-color: #67a8dd;
+}
+
 /*NAVBAR !!*/
 
 .navbar{
@@ -264,15 +272,69 @@ h3{
 
 /*games page*/
 
-.GAMEBANNER{
-    padding: 15px;
+.SumGame{
+    background-color: #2f424a;
+    margin: auto;
+    margin-top: 10px;
+    padding: 1rem;
     display: grid;
-    grid-template-columns: 50% 50%;
-    row-gap: 5px;
+    grid-template-columns: 14% 96%;
+    width: 95%;
+
 }
 
-.Genre h2{
-    background-color: #67a8dd;
+.SumGame img{
+    margin: auto;
+    padding: 15px;
+    width: 190px; 
+    height: 190px;
+    overflow: hidden; 
+    border-radius: 35%;
+}
+
+.SumGame h1{
+    padding: 2rem;
+    margin: 36px;
+    margin-left: 20px;
+    font-size: 5rem;
+    background-image: url('stars.jpg');
+    width: 75%;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.SumGame button{
+    width: 50%;
+    height: 2rem;
+    padding: 10px;
+    margin: auto;
+    align-self: center;
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.SumGame p{
+    font-size: 25px;
+    margin: auto;
+    margin-left: 20px;
+}
+
+.infoGame{
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    align-self: center;
+    font-size: 25px;
+    background-color: #2f424a;
+    color: #101637;
+}
+
+.gamebanner{
+    height: 130px;
+    overflow: hidden;
+    background-position: center;
+    background-image: url('hosue.PNG');
 }
 
 .GameGrid{
@@ -280,6 +342,15 @@ h3{
     grid-template-columns: 50% 50%;
     padding: 20px;
     margin: 20px;
+    border: #101637 solid 5px;
+    background-color: violet;
+}
+
+.GameGrid P{
+    font-size: 25px;
+    align-self: center;
+    text-align: center;
+    background-color: #ffffff;
 }
 
 .GameGrid img{
@@ -290,6 +361,7 @@ h3{
    overflow: hidden; 
    margin: auto;
    padding: 10px;
+   background-color: #ffffff;
 }
 
 .GameReview {
@@ -299,7 +371,26 @@ h3{
 }
 
 
-/*regGame ccs!! i cry*/
+/*game Form page set up!*/
+
+.GameForm{
+    background-color: #67a8dd;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+.GameForm h1{
+    padding: 0px;
+}
+
+.GameForm label{
+    font-size: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
 .Genrelist select{
     color: #122696;

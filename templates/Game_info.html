@@ -2,32 +2,34 @@
 {% block content%}
 <body>
      <section class="SumGame">
-        <div class="GAMEBANNER">
-            <img src="{{ url_for('static', filename='UPLOAD/') }}" alt="Logo" width="100" height="100">
-            <h1> This is {{ Game[1] }}</h1>
-            <p>{{Game[2]}} this meant to be genere</p>
-        </div>
-        <p> {{Game[3]}}</p>
+        <img src="{{ url_for('static', filename='UPLOAD/GAMEIMG/' + Game[4]) }}" alt="Logo">
+        <h1> This is {{ Game[1] }}</h1>
+        <button>Fav</button>
+        <p>This is a {{Genre[0]}} game!</p> 
     </section>
 
-    <section class="HEADING">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="chane too cool banner" width="100" height="100">
+    <p class="infoGame"> {{ Game[3] }}</p>
+
+    <section class="gamebanner">
+        <p>bro</p>
     </section>
 
     <section>
         <div class="GameGrid">
-            <p class="GBox"> {{ Game[6] }}</p>
-            <img class="GBox" src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
-            <p class="GBox"> {{ Game[7] }}</p>
-            <img class="GBox" src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
+            <p> {{ Game[5] }}</p>
+            <img src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
+            <p> {{ Game[6] }}</p>
+            <img src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
         </div>
     </section>
 
+
+<!--- Hey pls fix this!! uh, is link wong and idk wht :,3 -->
     <section class="GameReview">
         <h2> User who likes this game</h2>
         {% for User in User %}
             <li>  
-                <a href="User/{{User[0]}}">{{ User[1] }}</a>
+                <a href="/User">{{ User[1] }}</a>
             </li>
         {% endfor %}
         </div>

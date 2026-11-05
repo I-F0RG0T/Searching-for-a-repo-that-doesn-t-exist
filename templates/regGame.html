@@ -1,42 +1,48 @@
 {% extends 'base.html' %}
 {% block content%}
 
-<p> hi hi hi - spoke</p>
 
-<section class="Game-Register">
-    <h1>Put a Game on here!</h1>
 
-    <p> Do you have a game that we dont have here? <br>
-    Here you can put any game on our website for all to see!!</p>
+<p class="warning"> Hey! It seem you haven't made an account yet! To make a page for a game, <a href="/signup">sign up </a>with us!</p>
+
+{% if session.User %}
+
+    <section class="GameForm">
+        <h1>Put a Game on here!</h1>
+
+        <p> Do you have a game that we dont have here? <br>
+        Here you can put any game on our website for all to see!!</p>
 
         <form action="/make_Game" method="POST" enctype="multipart/form-data">
 
-        <!-- Name of game-->
-        <label for="Title">Title</label>
-        <input type="text" id="Title" name="Title" placeholder="hai" required>
+            <!-- Name of game-->
+            <label for="Title">Title</label>
+            <input type="text" id="Title" name="Title" placeholder="Title" required>
 
-        <!-- About-->
-        <label for="About">About the game!</label>
-        <input type="text" id="About" name="About" placeholder="test">
+            <!-- About-->
+            <label for="About">About the game!</label>
+            <input type="text" id="About" name="About" placeholder="What is your game about?">
 
-        <!-- Genre! that drop in a drop list.s-->
-        <label for="type_Genre">type_Genre</label>
-        <select id="type_Genre" name="type_Genre" required>
-            <option value="" selected disabled>select a genre!</option>
-            {% for type_Genre in type_Genre %}
-                <option value="{{ type_Genre[0] }}">
-            <!-- this is different becasue if i put [1] then [0]. it will put the namae of the genre rather than the genre id-->
-                    {{ type_Genre[1] }}
-                </option>
-            {% endfor %}
-        </select>
-        
-        <label for="file"> Image of Game</label>
-        <input type="file" id ="file" name="file" accept="image/*">
+            <!-- Genre! that drop in a drop list.s-->
+            <label for="type_Genre">type_Genre</label>
+            <select id="type_Genre" name="type_Genre" required>
+                <option value="" selected disabled>select a genre!</option>
+                {% for type_Genre in type_Genre %}
+                    <option value="{{ type_Genre[0] }}">
+                <!-- this is different becasue if i put [1] then [0]. it will put the namae of the genre rather than the genre id-->
+                        {{ type_Genre[1] }}
+                    </option>
+                {% endfor %}
+            </select>
+            
+            <label for="file"> Image of Game</label>
+            <input type="file" id ="file" name="file" accept="image/*">
 
-        <button type="submit">Button</button>
+            <button type="submit" class="GameForm">Button</button>
 
         </form>
-</select>
+    </select>
+
+{% endif %}
 
 {% endblock %}

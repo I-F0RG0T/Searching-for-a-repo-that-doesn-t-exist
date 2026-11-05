@@ -150,13 +150,13 @@ def Game():
 def Game_list(game_id):
     sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
     User = query_db("SELECT * FROM User")
+    Genre = query_db(f"SELECT Genre.type FROM Genre LEFT JOIN Game on Game.type_Genre = Genre.id WHERE game_id = {game_id};")
 
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
 
-
-    return render_template('Game_info.html', Game=Game, User=User)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User, Genre=Genre)#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')
@@ -196,6 +196,11 @@ def make_Game():
     return redirect("/Game")
 
 # stuff here --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@app.route( '/help' )
+def help():
+    
+    return render_template('help.html')
 
 @app.route( '/404' )
 def Error():
