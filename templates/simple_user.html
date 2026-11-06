@@ -4,20 +4,37 @@
 <body>
     <section class="USER">
         <section class="Header">
-            <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" class="USER">
+            {% if User[3] %}
+                <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" class="USER">
+            {% else %}
+                <img src="{{ url_for('static', filename='default.jpg' ) }}" alt="PFP" class="USER"> <!-- not have a pfp-->
+            {% endif %}
             <h1 class="Header"> This is {{ User[1] }}</h1>
+        </section>
+
+        <section>
+            {% if not User[4] %}
+                <p> This user hasn't put anything in there!</p>
+            {% else%}
+                <p>{{ User[4]}}</p>
+            {% endif %}
         </section>
 
         <section class="Fave">
             <h1> User faves...</h1>
-            <p>hai</p>
-            {% for Faves in gamefav %}
-                <li>
-                    <h2>{{ Faves[1]}}</h2>
-                    {{ Faves[2]}}
-                    {{ Faves[3]}}
-                 </li>
-             {% endfor %}
+            {% if not game %}
+                <p> THis user dont have faves right noe :p</p>
+
+            {% else %}
+                {% for game in game %}
+                    <li>
+                        <h2><a href="/Game/{{game[0]}}"> {{ game[1]}} </a></h2> <!--- w=sent to the page-->
+                        {{ game[2]}} <!-- Genere -->
+                        {{ game[3]}} <!-- informantion-->
+                        {{ game[4]}} <!-- logo of the game-->
+                    </li>
+                {% endfor %}
+            {% endif %}
         </section>
 
     </section>

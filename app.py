@@ -8,12 +8,15 @@ from pathlib import Path
 
 app = Flask(__name__)
 
-#radnon secry key for each session i think
+#radnon secect key for each session
 app.config['SECRET_KEY'] = "SecretkeyXD"
 
+#connects to the Dataabse or SQL
 DATABASE = "Data-1.db"
 
-UPLOAD_here = Path('static/UPLOAD') 
+#Help put any images that the user intest to the folder.
+UPLOAD_here = Path('static/UPLOAD')
+PFP_UPLOAD = Path('static/UPLOAD/PFP')
 
 
 def query_db(sql,args=(),one=False):
@@ -28,13 +31,14 @@ def query_db(sql,args=(),one=False):
     db.close()
     return (results[0] if results else None) if one else results
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
+@app.route('/')# <-- this is the name of a page of this website! the ('/') is what it is refear too. 
+def index():#<-- What this page do. OR like the 'defense' i think.
+    return render_template('index.html')#<-- This return this back to html it is assset too. the 'redner_template('index.html')' is telling the thing in the defense to go and let it procesee.
 
 #Sign up!!
 
-@app.route( '/signup', methods=["GET","POST"])
+@app.route( '/signup', methods=["GET","POST"])#<-- the 'methods=["GET","POST"]' is saying that we are getting somehting from the html area and posting it.
 def signup():
     if request.method == "POST":
 
@@ -58,14 +62,14 @@ def Login():
         Username = request.form['Username']
         Password = request.form['Password']
 
-        sql = "SELECT Username, Password from User WHERE Username = ?"
+        sql = "SELECT user_id, Username, Password from User WHERE Username = ?"
         User = query_db(sql=sql,args=(Username,),one=True)
 
         
         #v i think this is wrong!! 
         if User:
             #check the has and the password and see if it macth. It only works with thr hash one thought becasue the first user osnt hasrh and is working becasue of teh hasrd.
-            if check_password_hash(User[1], Password):
+            if check_password_hash(User[2], Password):
                 session['User'] = User
                 flash('You are sign in!')
                 return redirect("/")
@@ -97,12 +101,13 @@ def user():
 @app.route( '/User/<int:user_id>' )
 def User_list(user_id):
     sql = f"SELECT * FROM User WHERE user_id = {user_id}"
-    gamefav = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.game_id = Faves.game WHERE Faves.user_id = {user_id};")
+    game = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.game_id = Faves.game_id WHERE Faves.user_id = {user_id};")
   
     User = query_db(sql, one=True)
     if User == None:
         exit(404)
-    return render_template('simple_User.html', User=User, gamefav=gamefav)#give the data a templagte or like looks
+    
+    return render_template('simple_User.html', User=User, game=game ) #give the data a templagte or like looks
 
 @app.route( '/simple_User' )
 def simple_User():
@@ -149,14 +154,15 @@ def Game():
 @app.route( '/Game/<int:game_id>' )
 def Game_list(game_id):
     sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
-    User = query_db("SELECT * FROM User")
+    User = query_db(f"SELECT * FROM User INNER JOIN Faves ON User.user_id = Faves.user_id WHERE Faves.game_id = {game_id};")
     Genre = query_db(f"SELECT Genre.type FROM Genre LEFT JOIN Game on Game.type_Genre = Genre.id WHERE game_id = {game_id};")
+
 
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
 
-    return render_template('Game_info.html', Game=Game, User=User, Genre=Genre)#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User, Genre=Genre )#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')
@@ -166,8 +172,6 @@ def Game_list():
 @app.route( '/regGame')
 def regGame():
     #this get the user session and make it to a varblae.
-
-    #add the thing about the session :D
 
     type_Genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
 
@@ -185,7 +189,6 @@ def make_Game():
     if file:
         file.save(UPLOAD_here / filename)
     
-    print(filename, file)
     sql = """
         INSERT INTO Game (Title, About, filename, type_Genre )
         VALUES (?, ?, ?, ?)
@@ -195,7 +198,59 @@ def make_Game():
 
     return redirect("/Game")
 
-# stuff here --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# Customs stuff! :D  
+
+@app.route( '/custom' )
+def custom():
+    UserID = session['User']
+     # 'user' is the persom in the session and id is the person ID in the yeah
+
+    Game = query_db(f"SELECT * FROM Game;")
+    Faves = query_db(f"SELECT Game.title, Genre.type, Faves.Review From Faves LEFT JOIN Game ON Faves.game_id = Game.game_id LEFT JOIN Genre ON Game.type_Genre = Genre.id WHERE Faves.user_id = {UserID[0]}")
+
+    return render_template('custom.html', User=UserID, Game=Game, Faves=Faves)
+
+@app.route( '/Like_Games', methods=["GET","POST"] )
+def like_games():
+
+    UserID = session['User'][0]
+    game_id = request.form["game_id"]
+
+    sql = """
+        INSERT INTO Faves (user_id, game_id )
+        VALUES (?, ? )
+        """
+    
+    query_db(sql,(UserID, game_id ) )
+
+    return redirect("/custom")
+
+@app.route( '/Account', methods=["GET","POST"] )
+def Account():
+
+    UserID = session['User'] #Get which user is in the session ['user] and grabs their user id [0] from the Database. 
+    Username = request.form["Username"]
+    About = request.form["About"]
+
+    pfp = request.files["pfp"]
+    pfpname = request.files["pfp"].filename
+    
+    if pfp:
+        pfp.save(PFP_UPLOAD / pfpname)
+
+    sql = """
+        UPDATE User SET Username = (Username), pfp = (pfp), About = (About) WHERE user_id = 3;
+        VALUES (?, ?, ? )
+        """
+    
+    query_db(sql,( Username, pfp, About ) )
+
+    return redirect("/custom")
+
+
+# --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 
 @app.route( '/help' )
 def help():

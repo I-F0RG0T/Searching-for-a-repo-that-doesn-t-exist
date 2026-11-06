@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content%}
 
+{% if not session.User %}
 
+    <p class="warning"> Hey! It seem you haven't made an account yet! To make a page for a game, <a href="/signup">sign up </a>with us!</p>
 
-<p class="warning"> Hey! It seem you haven't made an account yet! To make a page for a game, <a href="/signup">sign up </a>with us!</p>
-
-{% if session.User %}
+{% else %}
 
     <section class="GameForm">
         <h1>Put a Game on here!</h1>

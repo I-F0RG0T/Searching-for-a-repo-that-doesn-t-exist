@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% if not session.User %}
+
+    <p class="warning"> You don't have account with us! Please sign up <a href="/Signup">here</a>! </p>
+
+{% else %}
+
+    <p> This page to change your page and see over your likes!</p>
+
+
+    <section class="FavesStuff">
+
+        <h1> This is games you like!</h1>
+
+        <p> You like ... </p>
+
+        {% for Faves in Faves %}
+            <lis>
+                <h2>{{Faves[0]}}</h2>
+                    <p>{{Faves[1]}} | {{Faves[2]}} | {{Faves[3]}}</p>
+            </lis>
+        {% endfor %}
+
+        <div>
+            <form action="/Like_Games" method="POST" enctype="multipart/form-data">
+
+                <label for="game_id">Games</label>
+                    <select id="game_id" name="game_id">
+                        <option value="" selected disabled>select a game!</option>
+                            {% for Game in Game %}
+                                <option value="{{ Game[0] }}">
+                                    {{ Game[1] }}
+                                </option>
+                            {% endfor %}
+                    </select>
+                <button type="submit">Like!</button>
+        </div>
+
+        </form>
+
+    </section>
+
+    <section class="GameForm">
+        <h1></h1>
+
+        <p> This is your setting for your account!</p>
+
+        <form action="/Account" method="POST" enctype="multipart/form-data">
+
+            <label for="Username">Username</label>
+            <input type="text" name="Username" placeholder="User">
+
+            <label for="pfp"> Image of Game</label>
+            <input type="file" id ="pfp" name="pfp" accept="image/*">
+                
+            <label for="About">About YOU!</label>
+            <input type="text" name="About" placeholder="About">
+
+            <button type="submit">Click!</button>
+
+        </form>
+    </select>
+
+{% endif %}
+
+{% endblock %}

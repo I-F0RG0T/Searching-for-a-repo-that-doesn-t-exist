@@ -4,7 +4,10 @@
      <section class="SumGame">
         <img src="{{ url_for('static', filename='UPLOAD/GAMEIMG/' + Game[4]) }}" alt="Logo">
         <h1> This is {{ Game[1] }}</h1>
-        <button>Fav</button>
+        {% if not session['user'] %}    
+            <p> You like this game!</p>
+        {% endif %}
+
         <p>This is a {{Genre[0]}} game!</p> 
     </section>
 
@@ -27,11 +30,23 @@
 <!--- Hey pls fix this!! uh, is link wong and idk wht :,3 -->
     <section class="GameReview">
         <h2> User who likes this game</h2>
-        {% for User in User %}
-            <li>  
-                <a href="/User">{{ User[1] }}</a>
-            </li>
-        {% endfor %}
+
+        {% if not User %}
+            {% if not session.User %}
+                <p> this game done have any resiws! If you wanna bethe first. make an <a href="/signup">account</a> with us! </p>
+            {% else %}
+                <p> this game done have any resiws. You can be the frist!</p>
+            {% endif %}
+        
+        {% else %}
+
+            {% for User in User %}
+                <li>  
+                    <a href="/User/{{User[0]}}">{{ User[1] }}</a>
+                    <p>{{ User[7] }}</p>
+                </li>
+            {% endfor %}
+        {% endif %}
         </div>
     </section>
 </body>
