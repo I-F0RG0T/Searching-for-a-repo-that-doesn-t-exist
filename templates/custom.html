@@ -16,12 +16,14 @@
 
         <p> You like ... </p>
 
-        {% for Faves in Faves %}
-            <lis>
-                <h2>{{Faves[0]}}</h2>
-                    <p>{{Faves[1]}} | {{Faves[2]}} | {{Faves[3]}}</p>
-            </lis>
-        {% endfor %}
+        <div class="favesContect">
+            {% for Faves in Faves %}
+                <li>
+                    <h2><a href="/Game/{{Faves[0]}}">{{Faves[0]}}</a></h2>
+                        <p>{{Faves[1]}} | {{Faves[2]}} | {{Faves[3]}}</p>
+                </li>
+            {% endfor %}
+        </div>
 
         <div>
             <form action="/Like_Games" method="POST" enctype="multipart/form-data">
@@ -36,9 +38,8 @@
                             {% endfor %}
                     </select>
                 <button type="submit">Like!</button>
+            </form>
         </div>
-
-        </form>
 
     </section>
 

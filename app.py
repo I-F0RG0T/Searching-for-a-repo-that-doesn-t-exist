@@ -5,27 +5,24 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pathlib import Path
 
 
-
 app = Flask(__name__)
 
-#radnon secect key for each session
+# This make the secrect key or harsh for each session random
 app.config['SECRET_KEY'] = "SecretkeyXD"
 
-#connects to the Dataabse or SQL
+# Connects to the Dataabse or SQL
 DATABASE = "Data-1.db"
 
-#Help put any images that the user intest to the folder.
+# Help put any images that the user want to put in to the folder.
 UPLOAD_here = Path('static/UPLOAD')
 PFP_UPLOAD = Path('static/UPLOAD/PFP')
 
 
-def query_db(sql,args=(),one=False):
-    #connect and query- will retun one item if one=true and can accept arguments as tuple
+def query_db(sql, args=(), one = False):
+    """ Connect and query- will retun one item if one=true and can accept arguments as tuple """
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-
     cursor.execute(sql, args)
-    
     results = cursor.fetchall()
     db.commit()
     db.close()
@@ -33,8 +30,10 @@ def query_db(sql,args=(),one=False):
 
 
 @app.route('/')# <-- this is the name of a page of this website! the ('/') is what it is refear too. 
-def index():#<-- What this page do. OR like the 'defense' i think.
-    return render_template('index.html')#<-- This return this back to html it is assset too. the 'redner_template('index.html')' is telling the thing in the defense to go and let it procesee.
+def index():# <-- What this page do. OR like the 'definition' of a code.
+    return render_template('index.html')
+#This return this back to html it is assset too. the 'redner_template('index.html')' is telling
+# the thing in the defense to go and let it procesee.
 
 #Sign up!!
 
@@ -157,12 +156,11 @@ def Game_list(game_id):
     User = query_db(f"SELECT * FROM User INNER JOIN Faves ON User.user_id = Faves.user_id WHERE Faves.game_id = {game_id};")
     Genre = query_db(f"SELECT Genre.type FROM Genre LEFT JOIN Game on Game.type_Genre = Genre.id WHERE game_id = {game_id};")
 
-
     Game = query_db(sql, one=True)
     if Game == None:
         exit(404)
 
-    return render_template('Game_info.html', Game=Game, User=User, Genre=Genre )#give the data a templagte or like looks
+    return render_template('Game_info.html', Game=Game, User=User, Genre=Genre, )#give the data a templagte or like looks
 
 def Game_list():
     return render_template('Game_info.html')

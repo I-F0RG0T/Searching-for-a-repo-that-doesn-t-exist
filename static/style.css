@@ -1,7 +1,10 @@
+/*This gets whatver is an 'a' from HTML and set whatever is in the brackects.*/
 a{
     color: rgb(255, 238, 0);
 }
 
+
+/*This here is like a class that group anything from HTML that is under that heading.*/
 .warning {
     text-align: center;
     margin: 18rem;
@@ -224,6 +227,7 @@ h3{
     padding: 5px;
     padding-left: 1rem;
     padding-bottom: 5px;
+    padding-top: 10px;
     font-size: 3rem;
 }
 
@@ -339,7 +343,7 @@ h3{
 /*games page*/
 
 .SumGame{
-    background-color: #2f424a;
+    background-color: #4483b0;
     margin: auto;
     margin-top: 10px;
     padding: 1rem;
@@ -369,17 +373,6 @@ h3{
     color: #ffffff;
 }
 
-.SumGame button{
-    width: 50%;
-    height: 2rem;
-    padding: 10px;
-    margin: auto;
-    align-self: center;
-    text-align: center;
-    background-color: #ffffff;
-    cursor: pointer;
-}
-
 .SumGame p{
     font-size: 25px;
     margin: auto;
@@ -392,39 +385,39 @@ h3{
     margin: 20px;
     align-self: center;
     font-size: 25px;
-    background-color: #2f424a;
+    background-color: #4483b0;
     color: #101637;
 }
 
 .gamebanner{
-    height: 130px;
     overflow: hidden;
-    background-position: center;
-    background-image: url('hosue.PNG');
+    height: 130px;
 }
 
 .GameGrid{
     display: grid;
     grid-template-columns: 60rem 20rem;
+    grid-template-rows: 300px;
     padding: 3rem 4rem 3rem 4rem;
     gap: 2rem;
     margin: 20px;
     border: #101637 solid 5px;
-    background-color: violet;
+    background-color: #4483b0;
 }
 
 .GameGrid P{
     padding: 2rem;
     margin: 1rem;
-    font-size: 25px;
+    font-size: 30px;
     align-self: center;
     text-align: center;
     background-color: #ffffff;
+    border-radius: 50px;
 }
 
 .GameGrid img{
-   width: 200px;
-   height: 200px;
+   width: 250px;
+   height: 250px;
    display: center;
    border-radius: 10px;
    overflow: hidden; 
@@ -434,9 +427,36 @@ h3{
 }
 
 .GameReview {
-    padding: 15px;
-    background-color: #67a8dd;
+    padding: 10px;
+    margin: 1rem;
+    background-color: #61b1ea;
     list-style-type: none;
+    border: #101637 solid 5px;
+}
+
+.GameReview h2{
+    font-size: 3rem;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin: 0px;
+}
+
+.GameReview li{
+    padding-left: 10px;
+}
+
+.GameReview a{
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 8px;
+    background-color: rgb(240, 194, 12);
+    color:#101637;
+    border-radius: 10px;
+}
+
+.GameReview p{
+    padding-bottom: 10px;
 }
 
 
@@ -483,8 +503,38 @@ h3{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    padding-top: 30px;
 }
 
 .fileinput{
-    padding: 20px;
+    padding-left: 60px;
 }
+
+.GameForm button{
+    background-color:rgb(244, 205, 96);
+    height: 45px;
+    font-size: 20px;
+}
+
+/*Custom or like overview of likes!*/
+
+.favesContect li{
+    list-style-type: none;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.FavesStuff{
+    background-color: #67a8dd;
+    margin: 20px;
+    padding: 10px;
+    padding-left: 25px;
+    border-radius: 10px;
+    
+}
+
+.FavesStuff div{
+    padding-bottom: 15px;
+}
+
+
