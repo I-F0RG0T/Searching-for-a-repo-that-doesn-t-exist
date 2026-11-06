@@ -234,28 +234,7 @@ h3{
 }
 
 
-/*user*/
-
-.USER section{
-    margin: 15px 5px;
-    background-color: #04AA6D;
-    border-radius: 5%;
-
-}
-.USER img{
-    width: 8rem;
-    height: 8rem;
-    margin: 20px;
-    border-radius: 25%;
-}
-
-.Header{
-    display: flex;    
-}
-
-.Header h1{
-    text-align: center;
-}
+/*user list page*/
 
 .UserBox{
     background-color: #67a8dd;
@@ -265,11 +244,97 @@ h3{
     list-style-type: none;
 }
 
-.Fave {
-    list-style-type: none;
-    padding: 25px 10px;
+.UserBox p{
+    padding: 20px;
+    margin: 0px;
+    text-align: center;
 }
 
+.USERLIST{
+    display: flex;
+    list-style-type: none;
+    margin: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.USERLIST a{
+    text-decoration: none;
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    font-size: 3rem;
+}
+
+.USERLIST img{
+    width: 9rem;
+    height: 9rem;
+    margin: 20px;
+    border-radius: 25%;
+}
+
+/*user epic page!! B) */
+
+.USER section{
+    margin: 15px 5px;
+    background-color:#8dccff;
+    border-radius: 10px;
+
+}
+.USER img{
+    width: 8rem;
+    height: 8rem;
+    margin: 20px;
+    border-radius: 25%;
+    border: #4483b0 solid 8px;
+}
+
+.Header{
+    display: flex; 
+    align-items: center;
+}
+
+.Header h1{
+    padding: 2rem;
+    padding-left: 20px;
+    font-size: 45px;
+}
+
+.InfoUser p{
+    padding: 10px;
+    font-size: 20px;
+}
+
+.Fave {
+    list-style-type: none;
+    padding: 15px 10px;
+    padding-top: 1px;
+    padding-left: 1rem;
+    border: #4483b0 10px solid;
+    font-size: 20px;
+}
+
+.HeaderFave {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.favesCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 40rem));
+    padding: 3rem;
+}
+
+.favesCards img{
+    width: 15rem;
+    height: 15rem;
+    margin: auto;
+}
+
+.favesCards p{
+    font-size: 25px;
+}
 
 /*games page*/
 
@@ -390,14 +455,36 @@ h3{
     margin: 20px;
 }
 
+.GameForm p{
+    margin-bottom: 20px;
+}
+
+.Lines{
+    margin: 0;
+}
+
 .GameForm label{
     font-size: 25px;
-    padding: 10px;
     display: flex;
     flex-direction: column;
-    font-size: 30px;
+    font-size: 35px;
+}
+
+.GameForm input{
+    margin-bottom: 30px;
 }
 
 .Genrelist select{
     color: #122696;
+}
+
+.GameForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.fileinput{
+    padding: 20px;
 }

@@ -12,7 +12,7 @@
             <h1 class="Header"> This is {{ User[1] }}</h1>
         </section>
 
-        <section>
+        <section class="InfoUser">
             {% if not User[4] %}
                 <p> This user hasn't put anything in there!</p>
             {% else%}
@@ -21,17 +21,23 @@
         </section>
 
         <section class="Fave">
-            <h1> User faves...</h1>
+            <h1 class="HeaderFave"> User faves...</h1>
             {% if not game %}
-                <p> THis user dont have faves right noe :p</p>
+                <p> This user dont have faves right now :o </p>
 
             {% else %}
                 {% for game in game %}
                     <li>
-                        <h2><a href="/Game/{{game[0]}}"> {{ game[1]}} </a></h2> <!--- w=sent to the page-->
-                        {{ game[2]}} <!-- Genere -->
-                        {{ game[3]}} <!-- informantion-->
-                        {{ game[4]}} <!-- logo of the game-->
+                        <article class="favesCards">
+                            <img src="{{ url_for('static', filename='UPLOAD/GAMEIMG/' + game[4]) }}" alt="Logo"> <!-- logo of the game-->
+                            <div>
+                                <h2><a href="/Game/{{game[0]}}"> {{ game[1]}} </a></h2> <!--- w=sent to the page-->
+                                <p>
+                                    <B>{{ game[11]}} </B> |<!-- Genere -->
+                                    {{ game[3]}} <!-- informantion-->
+                                </p>
+                            </div>
+                        </article>
                     </li>
                 {% endfor %}
             {% endif %}
@@ -41,4 +47,3 @@
 </body>
 
 {% endblock %}
-

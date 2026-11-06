@@ -101,7 +101,7 @@ def user():
 @app.route( '/User/<int:user_id>' )
 def User_list(user_id):
     sql = f"SELECT * FROM User WHERE user_id = {user_id}"
-    game = query_db(f"SELECT * FROM game INNER JOIN Faves ON game.game_id = Faves.game_id WHERE Faves.user_id = {user_id};")
+    game = query_db(f"SELECT * FROM game LEFT JOIN Faves ON game.game_id = Faves.game_id LEFT JOIN Genre ON Game.game_id = Genre.id WHERE Faves.user_id = {user_id};")
   
     User = query_db(sql, one=True)
     if User == None:
@@ -239,11 +239,11 @@ def Account():
         pfp.save(PFP_UPLOAD / pfpname)
 
     sql = """
-        UPDATE User SET Username = (Username), pfp = (pfp), About = (About) WHERE user_id = 3;
+        UPDATE User SET Username = (Username), pfpname = (pfpname), About = (About) WHERE user_id = 3;
         VALUES (?, ?, ? )
         """
     
-    query_db(sql,( Username, pfp, About ) )
+    query_db(sql,( Username, pfpname, About ) )
 
     return redirect("/custom")
 

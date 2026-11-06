@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% block content%}
 <section class="UserBox">
-    <p> User results!! nothing else </p>
+    <p> All users who have made a account with us! </p>
     {% for User in results %}
-        <li>  
-            <a href="User/{{User[0]}}">{{ User[1] }}</a>
+    <section>
+        <li class="USERLIST">  
+            {% if User[3] %}<!-- This grabs from the images from the User table from SQL-->
+                <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" width="100" height="100">
+            {% else %}
+                <img src="{{ url_for('static', filename='default.jpg' ) }}" alt="PFP"> <!-- If the User dont have a images in the database. It will them this.-->
+            {% endif %}
+            <a href="User/{{User[0]}}" class="USERLIST">{{ User[1] }}</a> <!-- Grabs the username from the User table. -->
         </li>
+    </section>
     {% endfor %}
 </section>
 
