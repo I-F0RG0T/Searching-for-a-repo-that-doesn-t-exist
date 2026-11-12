@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content%}
 
+<!-- This is flask. It checks if the user is log in or is in a session.-->
 {% if not session.User %}
 
+    <!-- If they are not in a session. They will see this-->
     <p class="warning"> You don't have account with us! Please sign up <a href="/Signup">here</a>! </p>
 
 {% else %}
 
+    <!-- If they are in a session. They will see this-->
     <p> This page to change your page and see over your likes!</p>
 
 

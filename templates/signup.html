@@ -3,16 +3,25 @@
 
 <h3> Epic Sign up!!</h3>
 
+<!-- The class is for css. It groups anyone part of the code that is classed 'signform'. 
+ You can make multiple classes.-->
 <section class="signform">
     <p> Do YOU dont have an account with us? Well fear not! fill this form and you can have you OWN
         account!! </p>
+
+    <!-- This is a form to make an account on the website-->
     <form action="/signup" method="POST">
         <label for="Username">Username</label>
+        <!-- This is for the username. The 'for' is so it knows what input it is taking from.-->
         <input type="text" name="Username" placeholder="User">
+        <!-- This is the username input by its name. It is a text input becasue the 'type' is text.-->
         
+        <!-- This is for password and follows the same principal as the username.-->
         <label for="Password">Password</label>
         <input type="text" name="Password" placeholder="Secret Code">
 
+        <!-- This is the button so the it send to the database. 
+         The Username and Password wil be send over there.-->
         <button type="submit">Sign up!</button>
     </form>
 </section>

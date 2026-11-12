@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block content%}
-    <p>
-        hello. this is test page aswell as page 404 :3
-    </p>
-        
+ <center>
+    <section class="error">
+        <p>
+            Hai! You seen to be lost! 
+            This page is a 404 page or a page for that let you know that what you
+            did is an error! :D
+        </p>
+        <img src="{{ url_for('static', filename= 'error.jpg') }}" alt="error!"> 
+    </section>
+</center>
 {% endblock %}

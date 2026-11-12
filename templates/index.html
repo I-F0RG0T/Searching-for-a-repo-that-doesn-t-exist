@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
+<!-- This is how you connect to the base page / layout. If a page 
+ don't have this. It will not connect to the page.-->
 {% block content%}
-
-<!-- big screeen is evil!! fix pls :p -->
+<!-- this is what it will show when looking at the actual page.-->
 
     <body>
+
+        <!-- Section is used to spilt some parts up so it is more easy to read.
+         This is normally used with class.-->
         <section class="HEADING">
             <h1> About us!!</h1>
         </section>
+
         <section>
             <center>
             <div class="Index">
+                <!-- div is like Section but less used. -->
+
                 <section class="box"> 
                     <p>Welcome to Website for Games! We are a wesbite for games! Or a website that 
                     has any types of games from across the inernet! From RPG dnd types games to your cozy romoica visial novals!
@@ -27,13 +34,17 @@
                 <img class = "box" src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
                 <img class= "box" src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
                 <img class= "box" src="{{ url_for('static', filename= 'img-3.jpg') }}" alt="gaming" >
+                <!-- 'img' is images. It put the images in by the 'src'. In this case, this is connected to the
+                 static folder and using the filename of whatever is in there.-->
+
             </div>
             </center>
         </section>
 
         <section class="Indexbottom">
-            <p> Click <a href="Game"> this</a> to go to the games page to look at the many games that we have!</p>
+            <p> Click <a href="/Game"> this</a> to go to the games page to look at the many games that we have!</p>
         </section>
 
     </body>
 {% endblock %}
+<!-- Beyone this. Nothing will show as it isn't inbetween 'block content' and 'endblock'.-->

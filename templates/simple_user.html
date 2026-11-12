@@ -5,17 +5,21 @@
     <section class="USER">
         <section class="Header">
             {% if User[3] %}
+            <!-- If have pfp-->
                 <img src="{{ url_for('static', filename='UPLOAD/PFP/' + User[3]) }}" alt="PFP" class="USER">
             {% else %}
-                <img src="{{ url_for('static', filename='default.jpg' ) }}" alt="PFP" class="USER"> <!-- not have a pfp-->
+            <!-- if not have a pfp-->
+                <img src="{{ url_for('static', filename='default.jpg' ) }}" alt="PFP" class="USER"> 
             {% endif %}
             <h1 class="Header"> This is {{ User[1] }}</h1>
         </section>
 
         <section class="InfoUser">
             {% if not User[4] %}
+            <!-- IF the user didn't wrote anything for their description.-->
                 <p> This user hasn't put anything in there!</p>
             {% else%}
+            <!-- IF the user wrote anything for their description.-->
                 <p>{{ User[4]}}</p>
             {% endif %}
         </section>
@@ -23,6 +27,7 @@
         <section class="Fave">
             <h1 class="HeaderFave"> User faves...</h1>
             {% if not game %}
+            <!-- IF the user dont have any games that is like that the more monect. It will say this.-->
                 <p> This user dont have faves right now :o </p>
 
             {% else %}
@@ -31,7 +36,7 @@
                         <article class="favesCards">
                             <img src="{{ url_for('static', filename='UPLOAD/GAMEIMG/' + game[4]) }}" alt="Logo"> <!-- logo of the game-->
                             <div>
-                                <h2><a href="/Game/{{game[0]}}"> {{ game[1]}} </a></h2> <!--- w=sent to the page-->
+                                <h2><a href="/Game/{{game[0]}}"> {{ game[1]}} </a></h2> <!--- link to the page-->
                                 <p>
                                     <B>{{ game[11]}} </B> |<!-- Genere -->
                                     {{ game[3]}} <!-- informantion-->

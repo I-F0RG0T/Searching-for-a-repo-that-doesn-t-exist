@@ -7,21 +7,26 @@
     <title>Rewies and games!!</title>
 </head>
 
+<!-- This is the layout of each page.-->
+
 <body>
     {% include 'nav.html' %}
+    <!-- this links thte nav page to the other pages. 
+     This makes it that it will be shown in each pages that is connect to this page.-->
 
+    <!-- This is the flashed messages. It will show if the python code have a flashed messages..-->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+                <!-- This is the message.-->
+            {% endfor %}
         {% endif %}
     {% endwith %}
 
     {% block content %}
     {% endblock %}
+    <!-- this is where the end of the layout ends.-->
 </body>
 
 </html> 

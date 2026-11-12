@@ -8,6 +8,10 @@
     </section>
 
     <section class="Gamelist">
+         <!-- So, 'Game' is what table it is referring to in sql, and 'Horror' or
+         'Fsp, etc, is like what column or lable that python is giving html. Then it will list
+         Games that are under that column.-->
+
         <h1>Horror</h1>
         {% for Game in Horror %}
             <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
@@ -44,14 +48,3 @@
 
     
 {% endblock %}
-
-
-
-
-
-<lis class="Genre">
-        {% for Game in results %}
-            <lis> {{ Game[4]}}</lis>
-                 <lis><a href="Game/{{Game[0]}}">{{ Game[1]}}</a></lis>
-        {% endfor %}
-    </lis>
