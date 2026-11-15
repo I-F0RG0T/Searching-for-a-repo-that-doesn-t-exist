@@ -1,4 +1,4 @@
-from flask import Flask , render_template, session, redirect, url_for, request, flash
+from flask import Flask, render_template, session, redirect, url_for, request, flash
 from livereload import Server
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -20,11 +20,11 @@ PFP_UPLOAD = Path('static/UPLOAD/PFP')
 
 def query_db(sql, args=(), one=False):
     """Connect and query.
-    
-    Will retun one item if one=true and
 
-    can accept arguments as tuple."""
+    This will retun one item if one=true.
 
+    It can accept arguments as tuple.
+    """
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
 
@@ -77,18 +77,18 @@ def login():
     """Run page and grab the user informantion in database and checks it."""
     if request.method == "POST":
 
-        username = request.form['Username']
-        password = request.form['Password']
+        Username = request.form['Username']
+        Password = request.form['Password']
 
         sql = "SELECT user_id, Username, Password from User WHERE Username = ?"
-        user = query_db(sql=sql, args=(username), one=True)
+        User = query_db(sql=sql, args=(Username), one=True)
 
-        if user:
+        if User:
             # Check the has and the password and see if it match.
             # It only works with the hash one thought becasue the
             # first user osnt hasrh and is working becasue of the harsh.
-            if check_password_hash(user[2], password):
-                session['User'] = user
+            if check_password_hash(User[2], Password):
+                session['User'] = User
                 flash('You are sign in!')
                 return redirect("/")
             else:
@@ -115,16 +115,13 @@ def logout():
 @app.route('/UserPage')
 def user():
     """Run a page."""
-
     results = query_db("SELECT * FROM User")
-
     return render_template('UserPage.html', results=results)
 
 
 @app.route('/User/<int:user_id>')
 def user_list(user_id):
     """Returs this as muplitle pages for how many games is in the database."""
-
     sql = f"SELECT * FROM User WHERE user_id = {user_id}"
     game = query_db(f"SELECT * FROM game LEFT JOIN Faves ON game.game_id = Faves.game_id LEFT JOIN Genre ON Game.game_id = Genre.id WHERE Faves.user_id = {user_id};")
     user = query_db(sql, one=True)
@@ -143,19 +140,18 @@ def simple_user():
 # End of Dynamic Routes for User and start of Games ;,D
 
 
-@app.route('/Game', methods=["GET","POST"])
+@app.route('/Game', methods=["GET", "POST"])
 def game():
     """Run the page and send data from the database."""
-
     results = query_db("SELECT * FROM Game;")
 
 # List of genres.
     horror = query_db("SELECT * FROM Genre;")
     for genre in horror:
         horror = query_db("SELECT * FROM Game WHERE Game.type_Genre = 1")
-        # the quert_db for this one and the many under this is telling 
-        # sql that it should grab the games if they are in 
-        # 'game-type_genre = [whatver number it is]'. 
+        # the quert_db for this one and the many under this is telling
+        # sql that it should grab the games if they are in
+        # 'game-type_genre = [whatver number it is]'.
         # which is the id of the genre type.
 
     fsp = query_db("SELECT * FROM Game;")
@@ -178,8 +174,9 @@ def game():
     for genre in casical:
         casical = query_db("SELECT * FROM Game WHERE Game.type_Genre = 6")
 
-    return render_template('Game.html' , results=results, Horror=horror, Fsp=fsp, 
-                           Roleplaying=roleplaying, Adventure=adventure, 
+    return render_template('Game.html', results=results,
+                           Horror=horror, Fsp=fsp,
+                           Roleplaying=roleplaying, Adventure=adventure,
                            Rpg=rpg, Casical=casical)
 
 
@@ -188,8 +185,7 @@ def game():
 
 @app.route('/Game/<int:game_id>')
 def game_list(game_id):
-    """Run game page. It makes muplitle pages for how many games is in the database."""
-
+    """Run muplitle pages for how many games is in the database."""
     sql = f"SELECT * FROM Game WHERE game_id = {game_id}"
     user = query_db(f"SELECT * FROM User INNER JOIN Faves ON User.user_id = Faves.user_id WHERE Faves.game_id = {game_id};")
     genre = query_db(f"SELECT Genre.type FROM Genre LEFT JOIN Game on Game.type_Genre = Genre.id WHERE game_id = {game_id};")
@@ -207,8 +203,7 @@ def game_list(game_id):
 
 @app.route('/regGame')
 def reggame():
-    """For the page to run and to get data from the database and sended to html"""
-
+    """For the page to run and to get data from the database."""
     type_genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
 
     return render_template('regGame.html', type_Genre=type_genre)
@@ -216,8 +211,7 @@ def reggame():
 
 @app.route('/make_Game', methods=["GET", "POST"])
 def make_game():
-    """This is form for game page!"""
-
+    """Add the user games into the data base."""
     Title = request.form["Title"]
     About = request.form["About"]
     type_Genre = request.form["type_Genre"]
@@ -241,9 +235,9 @@ def make_game():
 
 @app.route('/custom')
 def custom():
-    """This is for show some data from the database."""
+    """Return some data from the database."""
     userid = session['User']
-    # 'user' is the persom in the session and id 
+    # 'user' is the persom in the session and id
     # is the person ID in the database.
 
     game = query_db("SELECT * FROM Game;")
@@ -255,7 +249,7 @@ def custom():
 
 @app.route('/Like_Games', methods=["GET", "POST"])
 def like_games():
-    """This put the user id and the game id into sql."""
+    """Run the user id and the game id into sql."""
     userid = session['User'][0]
     game_id = request.form["game_id"]
 
