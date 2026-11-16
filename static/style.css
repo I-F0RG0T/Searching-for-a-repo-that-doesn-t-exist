@@ -421,7 +421,8 @@ h3{
     grid-column: 1;
     grid-row: span 2;
     padding: 2rem;
-    margin: 1rem;
+    width: 95%;
+    height: 30%;
     font-size: 30px;
     align-self: center;
     text-align: center;
@@ -500,7 +501,10 @@ h3{
 .test{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 50% 50%;
+}
+
+.test button{
+    grid-column: 2;
 }
 
 .GameForm label{

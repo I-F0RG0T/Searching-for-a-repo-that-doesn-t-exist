@@ -13,6 +13,8 @@
         <p> Do you have a game that we dont have here? <br>
         Here you can put any game on our website for all to see!!</p>
 
+        <p> If we don't have a genre that haven't listed. Go to <a href="/help">this link</a>!</p>
+
         <p class="Lines"> ---------------------------------------------------------------------------------------------------- </p>
 
         <form action="/make_Game" method="POST" enctype="multipart/form-data" class="test">
@@ -46,7 +48,17 @@
             
             <section>
                 <label for="file"> Image of Game</label>
-                <input type="file" id ="file" name="file" accept="image/*" class="fileinput">
+                <input type="file" id ="file" name="file" accept="image/*" class="fileinput" required>
+            </section>
+
+            <section>
+                <label for="file2"> Image of Game 2</label>
+                <input type="file" id ="file2" name="file2" accept="image/*" class="fileinput">
+            </section>
+
+            <section>
+                <label for="file3"> Image of Game 3</label>
+                <input type="file" id ="file3" name="file3" accept="image/*" class="fileinput">
             </section>
 
 

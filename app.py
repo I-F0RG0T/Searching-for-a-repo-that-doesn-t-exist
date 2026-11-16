@@ -218,15 +218,28 @@ def make_game():
     file = request.files["file"]
     filename = request.files["file"].filename
 
+    file2 = request.files["file"]
+    filename2 = request.files["file"].filename
+
+    file3 = request.files["file"]
+    filename3 = request.files["file"].filename
+
+
     if file:
         file.save(UPLOAD_here / filename)
 
+    if file2:
+            file2.save(UPLOAD_here / filename2)
+
+    if file3:
+            file3.save(UPLOAD_here / filename3)
+
     sql = """
         INSERT INTO Game (title, about, filename, type_genre )
-        VALUES (?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?)
         """
 
-    query_db(sql, (title, about, filename, type_genre))
+    query_db(sql, (title, about, filename, type_genre, filename2, filename3))
 
     return redirect("/Game")
 
