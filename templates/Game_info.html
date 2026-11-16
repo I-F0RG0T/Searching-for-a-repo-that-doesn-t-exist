@@ -13,18 +13,15 @@
         <p>This is a {{Genre[0]}} game!</p> 
     </section>
 
-    <p class="infoGame"> {{ Game[3] }}</p>
-
     <section class="gamebanner">
         <img src="{{ url_for('static', filename= 'starts.jpg') }}" alt="banner" width="1800">
     </section>
 
     <section>
         <div class="GameGrid">
-            <p> {{ Game[5] }}</p>
-            <img src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
-            <p> {{ Game[6] }}</p>
-            <img src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
+            <p class="Gamebox"> {{ Game[3] }}</p>
+            <img class="Gamebox" src="{{ url_for('static', filename= 'img-1.jpg') }}" alt="gaming">
+            <img class="Gamebox" src="{{ url_for('static', filename= 'img-2.jpg') }}" alt="gaming" >
         </div>
     </section>
 

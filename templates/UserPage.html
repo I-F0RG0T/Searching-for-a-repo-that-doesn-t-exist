@@ -12,6 +12,7 @@
                 <!-- If the User have a images in the database. It will show this.-->
             
                 {% else %}
+                
                 <img src="{{ url_for('static', filename='default.jpg' ) }}" alt="PFP"> <!-- If the User dont have a images in the database. It will show this.-->
 
             {% endif %}

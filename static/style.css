@@ -403,6 +403,7 @@ h3{
 .gamebanner{
     overflow: hidden;
     height: 130px;
+    margin: 20px;
 }
 
 .GameGrid{
@@ -417,6 +418,8 @@ h3{
 }
 
 .GameGrid P{
+    grid-column: 1;
+    grid-row: span 2;
     padding: 2rem;
     margin: 1rem;
     font-size: 30px;
@@ -492,6 +495,12 @@ h3{
 
 .Lines{
     margin: 0;
+}
+
+.test{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 50% 50%;
 }
 
 .GameForm label{

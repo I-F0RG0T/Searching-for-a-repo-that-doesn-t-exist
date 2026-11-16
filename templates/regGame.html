@@ -15,33 +15,39 @@
 
         <p class="Lines"> ---------------------------------------------------------------------------------------------------- </p>
 
-        <form action="/make_Game" method="POST" enctype="multipart/form-data">
+        <form action="/make_Game" method="POST" enctype="multipart/form-data" class="test">
         <!-- This is form is for making a game page for a game.-->
 
-            <!-- Name of game-->
-            <label for="Title">Title</label>
-            <input type="text" id="Title" name="Title" placeholder="Title" required>
+            <section>
+                <!-- Name of game-->
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="title" required>
+            </section>
 
-            <!-- About-->
-            <label for="About">About the game!</label>
-            <input type="text" id="About" name="About" placeholder="What is your game about?">
+            <section>
+                <!-- About-->
+                <label for="about">About the game!</label>
+                <input type="text" id="about" name="about" placeholder="What is your game about?">
+            </section>
 
-            <!-- Genre! that drop in a drop list.s-->
-            <label for="type_Genre">type_Genre</label>
-            <select id="type_Genre" name="type_Genre" required>
-                <option value="" selected disabled>select a genre!</option>
-                {% for type_Genre in type_Genre %}
-                    <option value="{{ type_Genre[0] }}">
-                <!-- this is different becasue if i put [1] then [0]. it will put the namae of the genre rather than the genre id-->
-                        {{ type_Genre[1] }}
-                    </option>
-                {% endfor %}
-            </select>
+            <section>
+                <!-- Genre! that drop in a drop list.s-->
+                <label for="type_genre">type_genre</label>
+                <select id="type_genre" name="type_genre" required>
+                    <option value="" selected disabled>select a genre!</option>
+                    {% for type_genre in type_genre %}
+                        <option value="{{ type_genre[0] }}">
+                    <!-- this is different becasue if i put [1] then [0]. it will put the namae of the genre rather than the genre id-->
+                            {{ type_genre[1] }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </section>
             
-            <div>
+            <section>
                 <label for="file"> Image of Game</label>
                 <input type="file" id ="file" name="file" accept="image/*" class="fileinput">
-            </div>
+            </section>
 
 
             <button type="submit" class="GameForm">Button</button>

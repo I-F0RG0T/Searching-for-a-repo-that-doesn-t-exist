@@ -40,6 +40,8 @@
                                 </option>
                             {% endfor %}
                     </select>
+                <label for="review">Your review!</label>
+                <input type="text" name="review" placeholder="This game is...">
                 <button type="submit">Like!</button>
             </form>
         </div>
@@ -53,14 +55,14 @@
 
         <form action="/Account" method="POST" enctype="multipart/form-data">
 
-            <label for="Username">Username</label>
-            <input type="text" name="Username" placeholder="User">
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="username">
 
-            <label for="pfp"> Image of Game</label>
+            <label for="pfp"> PFP</label>
             <input type="file" id ="pfp" name="pfp" accept="image/*">
                 
-            <label for="About">About YOU!</label>
-            <input type="text" name="About" placeholder="About">
+            <label for="about">About YOU!</label>
+            <input type="text" name="about" placeholder="about">
 
             <button type="submit">Click!</button>
 

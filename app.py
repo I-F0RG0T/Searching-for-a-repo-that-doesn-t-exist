@@ -59,14 +59,14 @@ def signup():
     """Run page and put new users username and password to the database."""
     if request.method == "POST":
 
-        username = request.form['Username']
-        password = request.form['Password']
+        username = request.form['username']
+        password = request.form['password']
 
         hashed_password = generate_password_hash(password)
 
-        sql = "INSERT INTO User (Username, Password) VALUES (?,?)"
+        sql = "INSERT INTO User (username, password) VALUES (?,?)"
         query_db(sql, (username, hashed_password))
-        flash("You have Sign up!")
+        flash("You have Sign up! Log in now!")
     return render_template('signup.html')
 
 
@@ -77,18 +77,18 @@ def login():
     """Run page and grab the user informantion in database and checks it."""
     if request.method == "POST":
 
-        Username = request.form['Username']
-        Password = request.form['Password']
+        username = request.form['username']
+        password = request.form['password']
 
-        sql = "SELECT user_id, Username, Password from User WHERE Username = ?"
-        User = query_db(sql=sql, args=(Username), one=True)
+        sql = "SELECT user_id, username, password from User WHERE username = ?"
+        user = query_db(sql=sql, args=(username,), one=True)
 
-        if User:
+        if user:
             # Check the has and the password and see if it match.
             # It only works with the hash one thought becasue the
             # first user osnt hasrh and is working becasue of the harsh.
-            if check_password_hash(User[2], Password):
-                session['User'] = User
+            if check_password_hash(user[2], password):
+                session['User'] = user
                 flash('You are sign in!')
                 return redirect("/")
             else:
@@ -170,14 +170,14 @@ def game():
     for genre in rpg:
         rpg = query_db("SELECT * FROM Game WHERE Game.type_Genre = 5")
 
-    casical = query_db("SELECT * FROM Game;")
-    for genre in casical:
-        casical = query_db("SELECT * FROM Game WHERE Game.type_Genre = 6")
+    casual = query_db("SELECT * FROM Game;")
+    for genre in casual:
+        casual = query_db("SELECT * FROM Game WHERE Game.type_Genre = 6")
 
     return render_template('Game.html', results=results,
                            Horror=horror, Fsp=fsp,
                            Roleplaying=roleplaying, Adventure=adventure,
-                           Rpg=rpg, Casical=casical)
+                           Rpg=rpg, casual=casual)
 
 
 # More games page related stiff. ------------------->>>>>>>
@@ -204,17 +204,17 @@ def game_list(game_id):
 @app.route('/regGame')
 def reggame():
     """For the page to run and to get data from the database."""
-    type_genre = query_db(""" SELECT id, type FROM Genre ORDER BY type """)
+    type_genre = query_db("""SELECT id, type FROM Genre ORDER BY type""")
 
-    return render_template('regGame.html', type_Genre=type_genre)
+    return render_template('regGame.html', type_genre=type_genre)
 
 
 @app.route('/make_Game', methods=["GET", "POST"])
 def make_game():
     """Add the user games into the data base."""
-    Title = request.form["Title"]
-    About = request.form["About"]
-    type_Genre = request.form["type_Genre"]
+    title = request.form["title"]
+    about = request.form["about"]
+    type_genre = request.form["type_Genre"]
     file = request.files["file"]
     filename = request.files["file"].filename
 
@@ -222,18 +222,18 @@ def make_game():
         file.save(UPLOAD_here / filename)
 
     sql = """
-        INSERT INTO Game (Title, About, filename, type_Genre )
+        INSERT INTO Game (title, about, filename, type_genre )
         VALUES (?, ?, ?, ?)
         """
 
-    query_db(sql, (Title, About, filename, type_Genre))
+    query_db(sql, (title, about, filename, type_genre))
 
     return redirect("/Game")
 
 # Likes stuff! :D
 
 
-@app.route('/custom')
+@app.route('/Your_Page')
 def custom():
     """Return some data from the database."""
     userid = session['User']
@@ -241,9 +241,9 @@ def custom():
     # is the person ID in the database.
 
     game = query_db("SELECT * FROM Game;")
-    faves = query_db(f"SELECT Game.title, Genre.type, Faves.Review From Faves LEFT JOIN Game ON Faves.game_id = Game.game_id LEFT JOIN Genre ON Game.type_Genre = Genre.id WHERE Faves.user_id = {userid[0]}")
+    faves = query_db(f"SELECT Game.title, Genre.type, Faves.review From Faves LEFT JOIN Game ON Faves.game_id = Game.game_id LEFT JOIN Genre ON Game.type_genre = Genre.id WHERE Faves.user_id = {userid[0]}")
 
-    return render_template('custom.html', UserID=userid,
+    return render_template('Your_Page.html', UserID=userid,
                            Game=game, Faves=faves)
 
 
@@ -254,12 +254,12 @@ def like_games():
     game_id = request.form["game_id"]
 
     sql = """
-        INSERT INTO Faves (user_id, game_id )
-        VALUES (?, ? )
+        INSERT INTO Faves (user_id, game_id, review)
+        VALUES (?, ?, ? )
         """
     query_db(sql, (userid, game_id))
 
-    return redirect("/custom")
+    return redirect("/Your_Page")
 
 
 @app.route('/Account', methods=["GET", "POST"])
@@ -287,7 +287,7 @@ def account():
 
     query_db(sql,( Username, pfpname, About ) )
 
-    return redirect("/custom")
+    return redirect("/Your_Page")
 
 
 # --------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
