@@ -25,27 +25,26 @@
         </div>
     </section>
 
-    <section class="GameReview">
-        <h2> User who likes this game</h2>
+    <section class="Review">
+        <h2 > User who likes this game</h2>
 
         {% if not User %}
             {% if not session.User %}
             <!-- If the user isnt log in or in a session. it will show this.-->
-
-                <p> this game done have any resiws! If you wanna bethe first. make an <a href="/signup">account</a> with us! </p>
+                <p class="Noreview"> this game done have any review! If you wanna bethe first. make an <a class="Noreview" href="/signup">account</a> with us! </p>
             {% else %}
             <!-- If user is in session or log in. It will show this.-->
-                <p> this game done have any resiws. You can be the frist!</p>
+                <p class="Noreview"> this game done have any review. You can be the first!</p>
             {% endif %}
         
         {% else %}
 
             {% for User in User %}
             <!-- This looks at the sql and list out the user who likes this game.-->
-                <li>  
-                    <a href="/User/{{User[0]}}">{{ User[1] }}</a>
+                <li class="GameReview">  
+                    <a class="GameReview" href="/User/{{User[0]}}">{{ User[1] }}</a>
                     <!-- This link to the user page and show the user username.-->
-                    <p>{{ User[7] }}</p>
+                    <p class="GameReview"> {{ User[7] }}</p>
                     <!-- This show what the user say about the game.-->
                 </li>
             {% endfor %}
